@@ -21,9 +21,13 @@
    </header>
 
    <main>
-     <%= yield %>
+     <%=
+     .notifications
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
+     yield %>
    </main>
-    
+
     <footer>
       ↑なにか背景画像でも入れるよ<br>
         何を入れるかはまだ未定だよ
