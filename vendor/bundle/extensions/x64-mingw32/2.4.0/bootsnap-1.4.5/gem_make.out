@@ -1,0 +1,16 @@
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20191113-15584-pd7jp.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR="
+generating bootsnap-x64-mingw32.def
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20191113-15584-169p0wi/bootsnap

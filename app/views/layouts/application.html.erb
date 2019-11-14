@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gourmand</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application' %>
+  </head>
+
+  <body>
+    <header>
+     <div class="header-left">
+       （ロゴ）ぐるもん
+     </div>
+     <div class="header-right">
+       <ul>
+         <li>(写真)○○○○さん</li>
+         <li>ログアウト</li>
+       </ul>
+     </div>
+   </header>
+
+   <main>
+     <%= yield %>
+   </main>
+    
+    <footer>
+      ↑なにか背景画像でも入れるよ<br>
+        何を入れるかはまだ未定だよ
+    </footer>
+  </body>
+</html>

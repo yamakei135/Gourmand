@@ -1,0 +1,57 @@
+// Place all the styles related to the user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.login-wrapper{
+border: 1px solid;
+height:auto;
+width:100%;
+display: flex;
+justify-content: center;
+padding-top: 100px;
+
+}
+
+.login-form{
+  border: 1px solid;
+height: 350px;
+width: 375px;
+text-align: center;
+font-size: 20px;
+padding-top: 30px;
+background-color: white;
+}
+.form-p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.input-text {
+    margin-bottom: 20px;
+    width: 250px;
+    height: 20px;
+}
+
+.form p{
+  margin-top: 15px;
+
+}
+
+.signup-wrapper{
+border: 1px solid;
+height:auto;
+width:100%;
+display: flex;
+justify-content: center;
+padding-top: 75px;
+}
+
+.signup-form{
+  border: 1px solid;
+  height: 400px;
+  width: 375px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 25px;
+  background-color: white;
+
+}

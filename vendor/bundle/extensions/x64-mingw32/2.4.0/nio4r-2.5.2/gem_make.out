@@ -1,0 +1,14 @@
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/nio4r-2.5.2/ext/nio4r
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20191113-15584-d1nb8x.rb extconf.rb
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/nio4r-2.5.2/ext/nio4r
+make "DESTDIR=" clean
+make: *** ターゲット 'clean' を make するルールがありません.  中止.
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/nio4r-2.5.2/ext/nio4r
+make "DESTDIR="
+make: 'all' に対して行うべき事はありません.
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/nio4r-2.5.2/ext/nio4r
+make "DESTDIR=" install
+make: 'install' に対して行うべき事はありません.

@@ -1,0 +1,117 @@
+// Place all the styles related to the post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* post.html css*/
+.input-range {
+  display: none;
+}
+.range-group {
+  position: relative;
+}
+.range-group > a {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.range-group > a:before {
+  content: "\f005";
+  font-family:'FontAwesome';
+  font-size: 20px;
+  font-weight: 900;
+  color: #aaa;
+
+}
+.range-group > a.on:before {
+  content: "\f005";
+  font-weight: 900;
+  color: #fc3;
+}
+
+.post-wrapper{
+  border: 1px solid;
+  height:auto;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.post-form{
+  border: 1px solid;
+  height: 590px;
+  width: 450px;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 30px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.post-form input{
+  width:250px;
+  margin-bottom: 5px;
+}
+
+.post-form textarea{
+  height:75px;
+  width:250px;
+  resize: none;
+}
+.post-submit{
+  width:125px;
+}
+
+.map-btn{
+  margin-right: 170px;
+}
+
+.detail-form {
+  border: 1px solid;
+  height: 350px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 15px;
+  background-color: #d9d9d9;
+  margin-bottom: 55px;
+}
+
+
+.restaurant-detail-image {
+  background-image: url("panda.jpg");  /* 表示する画像 */
+  width:  200px;       /* ※縦横を同値に */
+  height: 200px;
+  background-position: center center;  /* 横長画像の中央を基準に表示 */
+  float: left;
+  display: inline-block;
+}
+
+.restaurant-name {
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 26px;
+  margin-top: 22px;
+  position: relative;
+  float: left;
+}
+
+.restaurant-map {
+  width: 350px;
+  height: 300px;
+  frameborder: 0;
+  /*style="border:0;*/
+  position: relative;
+  float: left;
+}
+
+.mypage-bottom-wrapper {
+  background-color: #d9d9d9;
+  border: 1px solid;
+  height:400px;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 41px;
+  padding-bottom: 80px;
+}
