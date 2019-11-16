@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/6aa9551f50.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -14,18 +16,19 @@
      </div>
      <div class="header-right">
        <ul>
-         <li>(写真)○○○○さん</li>
+         <a href="/mypage/profile"><li>(写真)○○○○さん</li></a>
          <li>ログアウト</li>
+         <a href="/user/login"><li>login</li></a>
+         <a href="/user/registration"><li>新規登録</li></a>
+         <a href="/post/new"><li>新規投稿</li></a>
+
+
        </ul>
      </div>
    </header>
 
    <main>
-     <%=
-     .notifications
-      - flash.each do |key, value|
-        = content_tag(:div, value, class: key)
-     yield %>
+     <%= yield %>
    </main>
 
     <footer>
