@@ -13,7 +13,7 @@ class PostController < ApplicationController
                         comment: params[:comment])
 
       if @post.save
-        redirect_to action: 'index'
+        redirect_to action: :index
         flash[:notice] = "投稿されました🐼"
       else
         render action: :new
@@ -24,6 +24,6 @@ class PostController < ApplicationController
   end
 
   def index
-    @posts = Post.all　
+    @posts = Post.all
   end
 end

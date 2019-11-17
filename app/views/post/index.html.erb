@@ -1,31 +1,31 @@
 <div class="container">
-  <% if flash[:notice] %>
+    <% if flash[:notice] %>
 
-  <div class="post-flash">
-    <%= flash[:notice] %>
-  </div>
+        <div class="post-flash">
+          <%= flash[:notice] %>
+        </div>
 
-  <% end %>
-
-  <div class="posts-list-wrapper">
-
-  <div class="posts-lists">
-    <% @posts.each do |post| %>
-    <div class= "posts-list-item">
-    <h2><%= post.restaurant_name %></h2>
-    住所
-    <p><%= post.restaurant_adress %></p>
-    予算
-    <p><%= post.cost %>円</p>
-    評価
-    <p><%= post.rating %></p>
-    コメント
-    <p><%= post.comment %></p>
-    </div>
     <% end %>
-  </div>
+
+    <div class="posts-list-wrapper">
+
+      <div class="posts-lists">
+          <% @posts.each do |post| %>
+          <div class= "posts-list-item">
+          <h2><%= post.restaurant_name %></h2>
+          住所
+          <p><%= post.restaurant_adress %></p>
+          予算
+          <p><%= post.cost %>円</p>
+          評価
+          <p><%= post.rating %></p>
+          コメント
+          <p><%= post.comment %></p>
+          </div>
+          <% end %>
+      </div>
 
 
-  </div>
+    </div>
 
 </div>
