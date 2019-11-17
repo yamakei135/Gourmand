@@ -7,10 +7,10 @@ class PostController < ApplicationController
                         restaurant_name: params[:restaurant_name],
                         restaurant_adress: params[:restaurant_adress],
                         restaurant_adress_url: params[:restaurant_adress_url],
-                        post_image_name: params[:post_image_name],
                         cost: params[:cost],
                         rating: params[:rating],
                         comment: params[:comment])
+
 
       if @post.save
         redirect_to action: :index
@@ -18,6 +18,7 @@ class PostController < ApplicationController
       else
         render action: :new
       end
+
   end
 
   def detail
