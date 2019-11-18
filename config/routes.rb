@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/about'=>'home#about'
   get 'user/login'=>'user#login'
   get 'user/registration'=>'user#registration'
+  post 'user/create'=>'user/create'
   get 'mypage/profile'=>'mypage#profile'
   get 'mypage/edit'=>'mypage#edit'
   get 'post/new'=>'post#new'
