@@ -25,6 +25,6 @@ class PostController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.find_by(posted_by: "test")
   end
 end
