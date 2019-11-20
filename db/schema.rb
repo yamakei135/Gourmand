@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_150040) do
+ActiveRecord::Schema.define(version: 2019_11_18_093843) do
 
   create_table "posts", force: :cascade do |t|
     t.string "posted_by", null: false
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2019_11_14_150040) do
     t.integer "cost"
     t.integer "rating", null: false
     t.text "comment", limit: 140, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
