@@ -10,20 +10,33 @@
   <body>
     <header>
      <div class="header-left">
-       （ロゴ）ぐるもん
+       <%= link_to("🐷Gourmand", "/") %>
      </div>
      <div class="header-right">
-       <ul>
-         <li>(写真)○○○○さん</li>
-         <li>ログアウト</li>
-       </ul>
+       <ul class="header-menus">
+        　<li>
+        　  <%= link_to("Gourmandとは", "/home/about") %>
+        　</li>
+        　<li>
+        　  <%= link_to("新規投稿", "/post/new") %>
+        　</li>
+      　  <li>
+        　  <%= link_to("新規登録", "/user/registration") %>
+      　  </li>
+      　</ul>
      </div>
    </header>
+
+   <% if flash[:notice] %>
+     <div class="flash">
+       <%= flash[:notice] %>
+     </div>
+   <% end %>
 
    <main>
      <%= yield %>
    </main>
-    
+
     <footer>
       ↑なにか背景画像でも入れるよ<br>
         何を入れるかはまだ未定だよ
