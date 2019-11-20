@@ -15,7 +15,11 @@
        <%= link_to("🐷Gourmand", "/") %>
      </div>
      <div class="header-right">
+
        <ul>
+          <li>
+        　  <%= link_to("Gourmandとは", "/home/about") %>
+        　</li>
          <a href="/mypage/profile"><li>(写真)○○○○さん</li></a>
          <li>ログアウト</li>
          <a href="/user/login"><li>login</li></a>
@@ -24,8 +28,16 @@
          <a href="/post/index"><li>投稿一覧</li></a>
 
        </ul>
+
+       
      </div>
    </header>
+
+   <% if flash[:notice] %>
+     <div class="flash">
+       <%= flash[:notice] %>
+     </div>
+   <% end %>
 
    <main>
      <%= yield %>

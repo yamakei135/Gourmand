@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_11_18_093843) do
 
+post
   create_table "posts", force: :cascade do |t|
     t.string "posted_by", null: false
     t.string "restaurant_name", null: false
@@ -25,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_11_18_093843) do
     t.datetime "updated_at", null: false
   end
 
+
+test
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"

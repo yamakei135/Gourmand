@@ -10,15 +10,16 @@
       <% end %>
 
       <%=form_tag("users/create") do %>
-              <p>ニックネーム</p>
-              <input type="name" name="" value="<%= @user.name %>" class="input-text">
-              <p>メールアドレス</p>
-              <input type="email" name="" value="<%= @user.email %>"class="input-text">
-              <p>パスワード</p>
-              <input type="password" name="" value="<%= @user.password %>"class="input-text">
-              <div class=""></div>
-              <input type="submit" name="" value="新規登録" class="submit-btn">
-            <% end %>
-          </div>
-        </form>
-      </div>
+             
+        <p>ニックネーム</p>
+        <input type="name" name="" value="<%= @user.name %>" class="input-text">
+        <p>メールアドレス</p>
+        <input type="email" name="" value="<%= @user.email %>"class="input-text">
+        <p>パスワード</p>
+        <input type="password" name="" value="<%= @user.password %>"class="input-text">
+        <div class=""></div>
+        <input type="submit" name="" value="新規登録" class="submit-btn">
+      <% end %>
+    </div>
+  </form>
+</div>
