@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/6aa9551f50.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -13,17 +15,21 @@
        <%= link_to("🐷Gourmand", "/") %>
      </div>
      <div class="header-right">
-       <ul class="header-menus">
-        　<li>
+
+       <ul>
+          <li>
         　  <%= link_to("Gourmandとは", "/home/about") %>
         　</li>
-        　<li>
-        　  <%= link_to("新規投稿", "/post/new") %>
-        　</li>
-      　  <li>
-        　  <%= link_to("新規登録", "/user/registration") %>
-      　  </li>
-      　</ul>
+         <a href="/mypage/profile"><li>(写真)○○○○さん</li></a>
+         <li>ログアウト</li>
+         <a href="/user/login"><li>login</li></a>
+         <a href="/user/registration"><li>新規登録</li></a>
+         <a href="/post/new"><li>新規投稿</li></a>
+         <a href="/post/index"><li>投稿一覧</li></a>
+
+       </ul>
+
+       
      </div>
    </header>
 

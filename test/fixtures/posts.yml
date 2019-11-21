@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  posted_by: MyString
+  restaurant_name: MyString
+  restaurant_adress: MyText
+  restaurant_adress_url: MyText
+  post_image_name: MyText
+  cost: 1
+  rating: 1
+
+two:
+  posted_by: MyString
+  restaurant_name: MyString
+  restaurant_adress: MyText
+  restaurant_adress_url: MyText
+  post_image_name: MyText
+  cost: 1
+  rating: 1

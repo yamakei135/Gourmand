@@ -12,6 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2019_11_18_093843) do
 
+post
+  create_table "posts", force: :cascade do |t|
+    t.string "posted_by", null: false
+    t.string "restaurant_name", null: false
+    t.text "restaurant_adress"
+    t.text "restaurant_adress_url"
+    t.text "post_image_name"
+    t.integer "cost"
+    t.integer "rating", null: false
+    t.text "comment", limit: 140, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
+test
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
