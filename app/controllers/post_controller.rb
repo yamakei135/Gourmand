@@ -25,6 +25,7 @@ class PostController < ApplicationController
   end
 
   def index
-    @posts = Post.find_by(posted_by: "test")
+    @user = User.find_by(name: params[:name])
+    @posts = Post.find_by(posted_by: params[:name])
   end
 end
