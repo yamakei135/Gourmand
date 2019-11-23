@@ -17,8 +17,9 @@ class SessionController < ApplicationController
   end
 
   def logout
-    reset_session
-    redirect_to('/session/login')
+      reset_session
+      flash[:notice] = "ログアウトしました！"
+      redirect_to('/session/login')
   end
 
   private
