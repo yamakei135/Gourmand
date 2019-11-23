@@ -1,5 +1,5 @@
     <div class="container">
-        
+
         <% if @posts %>
             <div class="posts-list-wrapper">
 
@@ -12,7 +12,17 @@
                   予算
                   <p><%= post.cost %>円</p>
                   評価
-                  <p><%= post.rating %></p>
+                  <% if post.rating == 1 %>
+                    <p class="star"><i class="fas fa-star"></i></p>
+                  <% elsif post.rating == 2 %>
+                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                  <% elsif post.rating == 3 %>
+                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                  <% elsif post.rating == 4 %>
+                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                  <% else %>
+                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                  <% end %>
                   コメント
                   <p><%= post.comment %></p>
                   <p><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>

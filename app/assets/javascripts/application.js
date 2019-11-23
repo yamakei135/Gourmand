@@ -15,5 +15,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require jquery 
+//= require jquery
 //= require jquery_ujs
+$(function(){
+  setTimeout("$('.post-flash').slideUp()", 2000)
+})

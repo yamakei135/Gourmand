@@ -120,9 +120,11 @@
 }
 
 .post-flash{
+  opacity: 0.9;
+  position: absolute;
   width: 100%;
   color: white;
-  background-color: #6699FF;
+  background-color: royalblue;
   text-align: center;
   font-size: 18px;
   height: 50px;
@@ -134,7 +136,7 @@
 .posts-list-item{
   width: 750px;
   height: 250px;
-  background-color: white;
+  background-color: lightgrey;
   border: 1px solid;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -203,4 +205,8 @@
 
 .index-btn:hover{
   cursor: pointer;
+}
+
+.star{
+  color:yellow;
 }
