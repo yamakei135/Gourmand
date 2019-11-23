@@ -20,18 +20,21 @@
           <li>
         　  <%= link_to("Gourmandとは", "/home/about") %>
         　</li>
-         <a href="/mypage/profile"><li>(写真)○○○○さん</li></a>
-         <li>ログアウト</li>
-         <a href="/user/login"><li>login</li></a>
-         <a href="/user/registration"><li>新規登録</li></a>
-         <a href="/post/new"><li>新規投稿</li></a>
-         <a href="/post/index"><li>投稿一覧</li></a>
+        <% if current_user %>
+           <a href="/mypage/profile"><li><%= current_user.name %></li></a>
+           <a href="/post/new"><li>新規投稿</li></a>
+           <a href="/post/index"><li>投稿一覧</li></a>
+           <li><%= link_to "ログアウト",'/session/logout', method: :delete %></li>
+        <% else %>
+           <a href="/user/registration"><li>新規登録</li></a>
+           <a href="/session/login"><li>login</li></a>
+        <% end %>
 
        </ul>
 
-       
+
      </div>
-   </header>
+    </header>
 
    <% if flash[:notice] %>
      <div class="flash">

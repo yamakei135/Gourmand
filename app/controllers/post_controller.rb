@@ -10,8 +10,7 @@ class PostController < ApplicationController
                         cost: params[:cost],
                         rating: params[:rating],
                         comment: params[:comment])
-
-
+                        
       if @post.save
         redirect_to action: :index
         flash[:notice] = "投稿されました🐼"

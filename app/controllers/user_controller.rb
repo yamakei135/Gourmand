@@ -1,6 +1,4 @@
 class UserController < ApplicationController
-  def login
-  end
 
   def registration
   end
@@ -16,5 +14,8 @@ class UserController < ApplicationController
       flash[:notice] = "ユーザー登録に失敗しました"
       render("/user/registration")
     end
+  end
+
+  def logout
   end
 end
