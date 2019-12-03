@@ -30,7 +30,15 @@
   font-weight: 900;
   color: #fc3;
 }
+.input-file{
+  display: none;
+}
 
+.fa-plus{
+  border: 1px solid;
+padding: 15px;
+border-radius: 10px;
+}
 .post-wrapper{
   border: 1px solid;
   height:auto;

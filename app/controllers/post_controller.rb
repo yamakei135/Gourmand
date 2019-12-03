@@ -3,7 +3,7 @@ class PostController < ApplicationController
   end
 
   def create
-      @post = Post.new(posted_by: current_user.name,
+      @post = Post.new(posted_by: current_user.id,
                         restaurant_name: params[:restaurant_name],
                         restaurant_adress: params[:restaurant_adress],
                         restaurant_adress_url: params[:restaurant_adress_url],
@@ -24,7 +24,7 @@ class PostController < ApplicationController
   end
 
   def index
-    @post = Post.find_by(posted_by: current_user.name)
-    @posts = Post.where(posted_by: current_user.name)
+    @post = Post.find_by(posted_by: current_user.id)
+    @posts = Post.where(posted_by: current_user.id)
   end
 end
