@@ -27,4 +27,25 @@ class PostController < ApplicationController
     @post = Post.find_by(posted_by: current_user.id)
     @posts = Post.where(posted_by: current_user.id)
   end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def update
+    @post = Post.find_by(id: params[:id])
+    @post.restaurant_name = params[:restaurant_name]
+    @post.restaurant_adress = params[:restaurant_adress]
+    @post.cost = params[:cost]
+    @post.rating = params[:rating]
+    @post.comment = params[:comment]
+    @post.save
+    redirect_to action: :index
+  end
+
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect_to action: :index
+  end
 end

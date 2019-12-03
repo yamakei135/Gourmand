@@ -1,0 +1,55 @@
+<div class="post-wrapper">
+  <%= form_tag("/post/#{@post.id}/update",method: :post,class: "post-form") do %>
+    <h2>投稿編集画面</h2>
+    <p>店名</p>
+    <input type="text" name="restaurant_name" value="<%= @post.restaurant_name %>">
+    <p>住所</p>
+    <input type="text" name="restaurant_adress" value="<%= @post.restaurant_adress %>">
+    <div class="">
+
+    </div>
+    <button type="button" name="button" class="map-btn">地図から選択</button><!-- Google mapのAPI使う？ -->
+    <p>写真</p>
+    <i class="far fa-image fa-2x"></i>
+    <i class="fas fa-plus fa-2x"></i>
+    <input type="file" name="post_image" accept="image/*" capture="enviroment/*" value="画像をアップロード" class="input-file">
+    <script type="text/javascript">
+      $('.fa-image').click(function(){
+        $('.input-file').click()
+      });
+    </script>
+    <p>予算</p>
+    <input type="number" name="cost" value="<%= @post.cost %>">
+    <p>評価</p>
+    <div class="range-group">
+      <input type="range" min="1" max="5" value="<%= @post.rating %>" name="rating" class="input-range" />
+    </div>
+    <script type="text/javascript">
+      $('.range-group').each(function() {
+        for (var i = 0; i < 5; i ++) {
+          $(this).append('<a>');
+        }
+      });
+      $('.range-group>a').on('click', function() {
+         var index = $(this).index();
+        $(this).siblings().removeClass('on');
+         for (var i = 0; i < index; i++) {
+            $(this).parent().find('a').eq(i).addClass('on');
+         }
+        $(this).parent().find('.input-range').attr('value', index);
+      });
+
+      $('.name-edit-btn').click(function(){
+        $('.profile-name-edit').removeClass('hide');
+      });
+
+      $('.image-edit-btn').click(function(){
+        $('.profile-image-edit').removeClass('hide');
+      });
+    </script>
+    <p>コメント</p>
+    <textarea name="comment" rows="4"><%= @post.comment %></textarea>
+    <input type="submit" name="" value="保存" class="submit-btn post-submit">
+
+  <% end %>
+</div>

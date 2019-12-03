@@ -5,6 +5,41 @@
               <% @posts.each do |post| %>
                     <div class="posts-lists">
                       <div class= "posts-list-item">
+                        <i class="fas fa-ellipsis-h fas-<%= post.id %>" id="<%= post.id %>"></i>
+                        <div class="edit-menu menu-<%= post.id %>" id="<%= post.id %>">
+                          <%= link_to("編集","/post/#{@post.id}/edit") %>
+                          <p class="delete-txt txt-<%= post.id %>"  id="<%= post.id %>">削除</p>
+                          <i class="fas fa-times times-<%= post.id %>" id="<%= post.id %>"></i>
+                        </div>
+
+                        <div class="delete-confirm confirm-<%= post.id %>" id="<%= post.id %>">
+                            <p>本当にこの投稿を削除しますか？</p>
+                            <input type="button" name="" value="キャンセル" class="cancel-btn btn-<%= post.id %>"  id="<%= post.id %>">
+                            <%= link_to("削除", "/post/#{@post.id}/destroy",{method:"post"}) %>
+                        </div>
+
+
+                        <script type="text/javascript">
+
+                          $('.fa-ellipsis-h').click(function(){
+                            var id = $(this).attr('id')
+                            $(`.menu-${id}`).show()
+                          });
+                          $('.fa-times').click(function(){
+                            console.log('おはよう')
+                            var id2 = $(this).attr('id')
+                            $(`.menu-${id2}`).hide()
+                          });
+                          $('.delete-txt').click(function(){
+                            var id3 = $(this).attr('id')
+                            $(`.confirm-${id3}`).show()
+                          });
+                          $('.cancel-btn').click(function(){
+                            var id4 = $(this).attr('id')
+                            $(`.menu-${id4}`).hide()
+                            $(`.confirm-${id4}`).hide()
+                          });
+                        </script>
                         <h2><%= post.restaurant_name %></h2>
                         住所
                         <p><%= post.restaurant_adress %></p>
