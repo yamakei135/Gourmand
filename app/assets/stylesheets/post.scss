@@ -131,7 +131,10 @@
   line-height: 50px;
   font-weight: bold;
 }
-
+.posts-lists{
+  display: flex;
+  justify-content: center;
+}
 
 .posts-list-item{
   width: 750px;
@@ -145,6 +148,7 @@
 .posts-list-wrapper{
   height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 }

@@ -24,6 +24,7 @@ class PostController < ApplicationController
   end
 
   def index
+    @post = Post.find_by(posted_by: current_user.name)
     @posts = Post.where(posted_by: current_user.name)
   end
 end

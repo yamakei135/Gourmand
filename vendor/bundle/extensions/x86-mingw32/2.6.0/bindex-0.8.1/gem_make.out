@@ -1,0 +1,16 @@
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+C:/Ruby2.6.3/bin/ruby.exe -I C:/Ruby2.6.3/lib/ruby/2.6.0 -r ./siteconf20191126-11208-23up90.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+generating cruby-i386-mingw32.def
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20191126-11208-1q6btwp/skiptrace/internal

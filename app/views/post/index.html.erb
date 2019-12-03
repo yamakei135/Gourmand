@@ -1,38 +1,38 @@
     <div class="container">
 
-        <% if @posts %>
+        <% if @post %>
             <div class="posts-list-wrapper">
+              <% @posts.each do |post| %>
+                    <div class="posts-lists">
+                      <div class= "posts-list-item">
+                        <h2><%= post.restaurant_name %></h2>
+                        住所
+                        <p><%= post.restaurant_adress %></p>
+                        予算
+                        <p><%= post.cost %>円</p>
+                        評価
+                        <% case post.rating %>
+                          <% when 1 %>
+                              <p class="star"><i class="fas fa-star"></i></p>
+                          <% when 2 %>
+                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                          <% when 3 %>
+                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                          <% when 4 %>
+                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                          <% else %>
+                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                        <% end %>
 
-              <div class="posts-lists">
-                  <% @posts.each do |post| %>
-                  <div class= "posts-list-item">
-                  <h2><%= post.restaurant_name %></h2>
-                  住所
-                  <p><%= post.restaurant_adress %></p>
-                  予算
-                  <p><%= post.cost %>円</p>
-                  評価
-                  <% if post.rating == 1 %>
-                    <p class="star"><i class="fas fa-star"></i></p>
-                  <% elsif post.rating == 2 %>
-                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                  <% elsif post.rating == 3 %>
-                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                  <% elsif post.rating == 4 %>
-                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                  <% else %>
-                    <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                  <% end %>
-                  コメント
-                  <p><%= post.comment %></p>
-                  <p><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-                  </div>
-                  <% end %>
+                        コメント
+                        <p><%= post.comment %></p>
+                        <p><%= post.created_at.strftime('%Y/%m/%d %H:%M')%></p>
+                      </div>
+                    </div>
+                <% end %>
               </div>
-
-
-            </div>
         <% else %>
+
             <div class="index-container">
               <div class="index-wrapper">
                 <h2>まだ投稿がありません。<br>行った店を記録してみましょう！</h2>
