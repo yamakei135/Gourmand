@@ -1,0 +1,15 @@
+      <div class="login-wrapper">
+        <%= form_with scope: :session,url: session_login_path, local: true,class: "login-form" do |f| %>
+        <p class="form-p">ログイン</p>
+          <div>
+            <%= f.label :email, 'メールアドレス' %>
+            <%= f.text_field :email, id: 'session_email',class:'input-text' %>
+          </div>
+          <div>
+            <%= f.label :password, 'パスワード' %>
+            <div class=""></div>
+            <%= f.password_field :password, id:'session_password',class:'input-text'%>
+          </div>
+          <%= f.submit 'ログイン',class: 'submit-btn' %>
+        <% end %>
+      </div>

@@ -1,29 +1,49 @@
 
      <div class="post-wrapper">
-       <form class="post-form" action="index.html" method="post">
+       <%= form_tag '/post/create',method: :post,class: "post-form", multipart:true do %>
          <h2>投稿フォーム</h2>
          <p>店名</p>
          <input type="text" name="restaurant_name" value="">
          <p>住所</p>
-         <input type="text" name="address" value="">
+         <input type="text" name="restaurant_adress" value="">
          <div class="">
 
          </div>
          <button type="button" name="button" class="map-btn">地図から選択</button><!-- Google mapのAPI使う？ -->
          <p>写真</p>
-         <input type="file" name="" value="" accept="image/*" capture="enviroment/*" value="画像をアップロード">
+         <input type="file" name="post_image" value="" accept="image/*" capture="enviroment/*" value="画像をアップロード">
          <p>予算</p>
-         <input type="number" name="" value="">
+         <input type="number" name="cost" value="">
          <p>評価</p>
          <div class="range-group">
-           <input type="range" min="1" max="5" value="" class="input-range" />
+           <input type="range" min="1" max="5" value="" name="rating" class="input-range" />
          </div>
+         <script type="text/javascript">
+           $('.range-group').each(function() {
+             for (var i = 0; i < 5; i ++) {
+               $(this).append('<a>');
+             }
+           });
+           $('.range-group>a').on('click', function() {
+              var index = $(this).index();
+             $(this).siblings().removeClass('on');
+              for (var i = 0; i < index; i++) {
+                 $(this).parent().find('a').eq(i).addClass('on');
+              }
+             $(this).parent().find('.input-range').attr('value', index);
+           });
+
+           $('.name-edit-btn').click(function(){
+             $('.profile-name-edit').removeClass('hide');
+           });
+
+           $('.image-edit-btn').click(function(){
+             $('.profile-image-edit').removeClass('hide');
+           });
+         </script>
          <p>コメント</p>
-         <textarea name="name" rows="4"></textarea>
+         <textarea name="comment" rows="4"></textarea>
          <input type="submit" name="" value="投稿" class="submit-btn post-submit">
 
-       </form>
+       <% end %>
      </div>
-
-
-   

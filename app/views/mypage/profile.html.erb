@@ -2,6 +2,7 @@
       <div class="mypage-top-wrapper">
         <form class="mypage-form">
             <div class="profile-image">
+              <%#= <img src="<%= "/user_images/#{@user.image_name}" >"> %>
               <div class="edit-btn">
                 <i class="fas fa-edit image-edit-btn">編集</i>
               </div>
@@ -11,7 +12,7 @@
               <p>写真をアップロード</p>
               <input type="file" name="" value="" accept="image/*" capture="enviroment/*" value="画像をアップロード" class="profile-image-edit">
             </div>
-            <p class="profile-name">パンダ太郎🐼<i class="fas fa-edit name-edit-btn">編集</i></p>
+            <p class="profile-name"><%= current_user.name %><i class="fas fa-edit name-edit-btn"><%= link_to("編集", "/mypage/edit") %></i></p>
             <div class="name-edit  edit-form">
               <input type="text" class="profile-name-edit hide" name="profile-name" placeholder="名前を入力">
             </div>
@@ -35,19 +36,18 @@
             <div class="tab_content_description">
               <p class="c-txtsp">行ったお店の内容がここに入ります</p>
               <div class="customer-restaurant">
-                <div class="restuarant-image-1"></div>
+                <p><img src="restaurant1.png" alt="［写真］" class"restuarant-image-1">店舗1</p>
               </div>
               <div class="customer-restaurant">
-                <div class="restuarant-image-2"></div>
+                <p><img src="restaurant2.png" alt="［写真］" class"restuarant-image-2">店舗2</p>
               </div>
               <div class="customer-restaurant">
-                <div class="restuarant-image-3"></div>
+                <p><img src="restaurant3.png" alt="［写真］" class"restuarant-image-3">店舗3</p>
               </div>
               <div class="customer-restaurant">
-                <div class="restuarant-image-4"></div>
+                <p><img src="restaurant4.png" alt="［写真］" class"restuarant-image-4">店舗4</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    

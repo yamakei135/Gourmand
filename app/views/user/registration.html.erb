@@ -1,15 +1,19 @@
+<div class="signup-wrapper">
 
-     <div class="signup-wrapper">
-       <form class="signup-form">
-         <p class="form-p">新規登録</p>
-         <p>ニックネーム</p>
-         <input type="text" name="" value="" class="input-text">
-         <p>メールアドレス</p>
-         <input type="email" name="" value=""class="input-text">
-         <p>パスワード</p>
-         <input type="password" name="" value=""class="input-text">
-         <div class=""></div>
-         <input type="submit" name="" value="ログイン" class="submit-btn">
-       </form>
-     </div>
-   
+
+    <div class="form-body">
+
+      <%= form_tag("/user/create",method: :post,class: "signup-form") do %>
+        <p class="form-p">新規ユーザー登録</p>
+        <p>ニックネーム</p>
+        <input type="name" name="name" value="" class="input-text">
+        <p>メールアドレス</p>
+        <input type="email" name="email" value=""class="input-text">
+        <p>パスワード</p>
+        <input type="password" name="password" value=""class="input-text">
+        <div class=""></div>
+        <input type="submit" name="" value="新規登録" class="submit-btn">
+      <% end %>
+    </div>
+
+</div>

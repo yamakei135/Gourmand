@@ -13,7 +13,7 @@
              <p>写真をアップロード</p>
              <input type="file" name="" value="" accept="image/*" capture="enviroment/*" value="画像をアップロード" class="profile-image-edit">
            </div>
-           <p class="profile-name">パンダ太郎🐼<i class="fas fa-edit name-edit-btn">編集</i></p>
+           <p class="profile-name"><%= current_user.name %><i class="fas fa-edit name-edit-btn">編集</i></p>
            <div class="name-edit  edit-form">
              <input type="text" class="profile-name-edit hide" name="profile-name" placeholder="名前を入力">
            </div>
