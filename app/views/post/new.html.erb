@@ -1,6 +1,6 @@
 
      <div class="post-wrapper">
-       <%= form_tag('/post/create',method: :post,class: "post-form") do %>
+       <%= form_tag '/post/create',method: 'post',class: "post-form",multipart: true do %>
          <h2>投稿フォーム</h2>
          <p>店名</p>
          <input type="text" name="restaurant_name" value="">
@@ -13,7 +13,7 @@
          <p>写真</p>
          <i class="far fa-image fa-2x"></i>
          <i class="fas fa-plus fa-2x"></i>
-         <input type="file" name="post_image" accept="image/*" capture="enviroment/*" value="画像をアップロード" class="input-file">
+         <input name="image"  type="file" class="input-file">
          <script type="text/javascript">
            $('.fa-image').click(function(){
              $('.input-file').click()

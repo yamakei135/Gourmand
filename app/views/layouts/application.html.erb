@@ -35,17 +35,14 @@
 
      </div>
     </header>
-    <% if flash[:notice] %>
 
+    <% if flash[:notice] %>
         <div class="post-flash">
           <%= flash[:notice] %>
         </div>
-
     <% end %>
-
-
+    
    <main>
-
      <%= yield %>
    </main>
 
