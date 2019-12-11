@@ -11,7 +11,7 @@
               <p>写真をアップロード</p>
               <input type="file" name="" value="" accept="image/*" capture="enviroment/*" value="画像をアップロード" class="profile-image-edit">
             </div>
-            <p class="profile-name"><%= current_user.name %><i class="fas fa-edit name-edit-btn"><%= link_to("編集", "/mypage/edit") %></i></p>
+            <p class="profile-name"><%= current_user.name %><i class="fas fa-edit name-edit-btn"><%= link_to "編集", "/mypage/edit", class: "edit-link" %></i></p>
             <div class="name-edit  edit-form">
               <input type="text" class="profile-name-edit hide" name="profile-name" placeholder="名前を入力">
             </div>
