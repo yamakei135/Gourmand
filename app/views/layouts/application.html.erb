@@ -18,7 +18,7 @@
 
        <ul>
           <li>
-        　  <%= link_to("Gourmandとは", "https://www.xvideos.com/lang/japanese") %>
+        　  <%= link_to("Gourmandとは", "/home/about") %>
         　</li>
         <% if current_user %>
            <a href="/mypage/profile"><li><%= current_user.name %></li></a>
@@ -35,17 +35,14 @@
 
      </div>
     </header>
-    <% if flash[:notice] %>
 
+    <% if flash[:notice] %>
         <div class="post-flash">
           <%= flash[:notice] %>
         </div>
-
     <% end %>
-
-
+    
    <main>
-
      <%= yield %>
    </main>
 

@@ -117,10 +117,6 @@
   opacity: 0.5;
 }
 
-.name-edit-btn a{
-  color: black;
-}
-
 .fa-edit{
     font-size: 15px;
 }
@@ -218,22 +214,30 @@ input[name="tab_item"] {
 
 }
 .restuarant-image-1{
+  background-image: url("panda.jpg");  /* 表示する画像 */
   width:  180px;       /* ※縦横を同値に */
   height: 180px;       /* ※縦横を同値に */
+  background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;          /* 複数の画像を横に並べたい場合 */
 }
 .restuarant-image-2{
+  background-image: url("panda.jpg");  /* 表示する画像 */
   width:  180px;       /* ※縦横を同値に */
   height: 180px;       /* ※縦横を同値に */
+  background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;
 }
 .restuarant-image-3{
+  background-image: url("panda.jpg");  /* 表示する画像 */
   width:  180px;       /* ※縦横を同値に */
   height: 180px;       /* ※縦横を同値に */
+  background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;
 }
 .restuarant-image-4{
+  background-image: url("panda.jpg");  /* 表示する画像 */
   width:  180px;       /* ※縦横を同値に */
   height: 180px;       /* ※縦横を同値に */
+  background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;
 }
