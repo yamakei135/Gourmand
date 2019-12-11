@@ -5,4 +5,5 @@ class MypageController < ApplicationController
 
   def edit
   end
+
 end
