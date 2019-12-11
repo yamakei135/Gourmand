@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   post 'post/:id/update'=>'post#update'
   post 'post/:id/destroy'=>'post#destroy'
   post 'user/:id/update'=>'user#update'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

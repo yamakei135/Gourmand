@@ -1,0 +1,18 @@
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+C:/Ruby2.6.3/bin/ruby.exe -I C:/Ruby2.6.3/lib/ruby/2.6.0 -r ./siteconf20191126-9088-1or32m6.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: C:/Users/keimi/Desktop/Gourmand-app/Gourmand/vendor/bundle/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR="
+generating bootsnap-i386-mingw32.def
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+C:/Ruby2.6.3/msys32/mingw32/bin/../lib/gcc/i686-w64-mingw32/9.2.0/../../../../i686-w64-mingw32/bin/ld.exe: bootsnap.o:bootsnap.c:(.text+0x5d1): undefined reference to `__strcat_chk'
+C:/Ruby2.6.3/msys32/mingw32/bin/../lib/gcc/i686-w64-mingw32/9.2.0/../../../../i686-w64-mingw32/bin/ld.exe: bootsnap.o:bootsnap.c:(.text+0xae9): undefined reference to `__chk_fail'
+collect2.exe: error: ld returned 1 exit status
+make: *** [Makefile:261: bootsnap.so] エラー 1
+
+make failed, exit code 2

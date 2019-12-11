@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_12_06_070719) do
 
+
   create_table "posts", force: :cascade do |t|
     t.string "posted_by", null: false
     t.string "restaurant_name", null: false
