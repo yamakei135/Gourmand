@@ -1,9 +1,9 @@
 
      <div class="post-wrapper">
-       <%= form_tag '/post/create',method: 'post',class: "post-form",multipart: true do %>
+       <%= form_tag '/post/create',method: 'post',class: "post-form",model: @post,local: true, multipart: true do %>
          <h2>投稿フォーム</h2>
          <p>店名</p>
-         <input type="text" name="restaurant_name" value="">
+         <input type="text" name="restaurant_name" value="" required>
          <p>住所</p>
          <input type="text" name="restaurant_adress" value="">
          <div class="">
@@ -13,19 +13,22 @@
          <p>写真</p>
          <i class="far fa-image fa-2x"></i>
          <i class="fas fa-plus fa-2x"></i>
-         <input name="image"  type="file" class="input-file">
+         <input name="image"  type="file" class="input-file" required>
          <script type="text/javascript">
            $('.fa-image').click(function(){
              $('.input-file').click()
            });
          </script>
          <p>予算</p>
-         <input type="number" name="cost" value="">
+         ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
          <p>評価</p>
          <div class="range-group">
-           <input type="range" min="1" max="5" value="" name="rating" class="input-range" />
+           <input type="range" min="1" max="5" value="" name="rating" class="input-range" required>
          </div>
          <script type="text/javascript">
+           function sliceMaxLength(elem, maxLength) {
+             elem.value = elem.value.slice(0, maxLength);
+            }
            $('.range-group').each(function() {
              for (var i = 0; i < 5; i ++) {
                $(this).append('<a>');
@@ -49,7 +52,22 @@
            });
          </script>
          <p>コメント</p>
-         <textarea name="comment" rows="4"></textarea>
+         <textarea name="comment" rows="4" maxlength="140"></textarea>
+         <p class="text-count">140文字まで入力できます。現在<span id="txtlmt">0</span>文字です</p>
+         <script type="text/javascript">
+           $("textarea").keyup(function(){
+                var txtcount = $(this).val().length;
+                $("#txtlmt").text(txtcount);
+                if(txtcount == 0){
+                  $("#txtlmt").text("0");
+                }
+                if(txtcount >= 140){
+                  $("#txtlmt").css("color","red");
+                } else {
+                  $("#txtlmt").css("color","#333");
+                }
+            });
+         </script>
          <input type="submit" name="" value="投稿" class="submit-btn post-submit">
 
        <% end %>

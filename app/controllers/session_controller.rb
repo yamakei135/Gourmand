@@ -11,6 +11,7 @@ class SessionController < ApplicationController
         flash[:notice] = "ログインしました！"
         redirect_to('/mypage/profile')
       else
+        flash[:notice] = "ログインできませんでした。メールアドレスとパスワードを確認してください。"
         render :form
       end
 

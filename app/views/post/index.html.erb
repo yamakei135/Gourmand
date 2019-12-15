@@ -62,29 +62,43 @@
                               <h2><%= post.restaurant_name %></h2>
                             </div>
                         </div>
+                        <div class="list-bottom">
+                          <div class="list-left">
+                            <% if post.image.attached? %>
+                            <%= image_tag post.image,class: "post-image" %>
+                            <% end %>
+                          </div>
 
-                        <img src="<%= "/post_images/#{post.post_image_name}" %>">
-                        住所
-                        <p><%= post.restaurant_adress %></p>
-                        予算
-                        <p><%= post.cost %>円</p>
-                        評価
-                        <% case post.rating %>
-                          <% when 1 %>
-                              <p class="star"><i class="fas fa-star"></i></p>
-                          <% when 2 %>
-                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                          <% when 3 %>
-                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                          <% when 4 %>
-                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                          <% else %>
-                                <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                        <% end %>
+                          <div class="list-right">
+                            <div class="restaurant-detail">
 
-                        コメント
-                        <p><%= post.comment %></p>
+                              <p><b>住所</b>:<%= post.restaurant_adress %></p>
+
+                              <p><b>予算</b>:<%= post.cost %>円</p>
+
+                              <% case post.rating %>
+                                <% when 1 %>
+                                    <p class="star"><i class="fas fa-star"></i></p>
+                                <% when 2 %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                                <% when 3 %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                                <% when 4 %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                                <% else %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                              <% end %>
+                            </div>
+                            <div class="comment">
+                              <b>コメント</b>
+                              <p><%= post.comment %></p>
+                            </div>
+
+                          </div>
+                        </div>
                         <p class="post-date"><%= post.created_at.strftime('%Y/%m/%d %H:%M')%></p>
+
+
                       </div>
                     </div>
                 <% end %>
