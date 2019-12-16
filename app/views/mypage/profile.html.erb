@@ -33,19 +33,23 @@
           </div>
           <div class="tab_content" id="restaurants_content">
             <div class="tab_content_description">
-              <p class="c-txtsp">行ったお店の内容がここに入ります</p>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-1"></div>
-              </div>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-2"></div>
-              </div>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-3"></div>
-              </div>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-4"></div>
-              </div>
+
+              <% @posts.each do |post| %>
+                <div class="restaurant-lists-item">
+                  <% if post.image.attached? %>
+                  <%= image_tag post.image,class: "list-item-image" %>
+                  <p class="item-name"><%= post.restaurant_name %></p>
+                  <% end %>
+                </div>
+              <% end %>
+              <script type="text/javascript">
+                $('.restaurant-lists-item').hover(function(){
+                  $(this).find('.list-item-image').addClass('img-darken')
+                  },
+                  function(){
+                    $(this).find('.list-item-image').removeClass('img-darken')
+                  });
+              </script>
             </div>
           </div>
         </div>
