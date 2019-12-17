@@ -9,18 +9,16 @@ class PostController < ApplicationController
                         restaurant_adress_url: params[:restaurant_adress_url],
                         cost: params[:cost],
                         rating: params[:rating],
-                        comment: params[:comment])
+                        comment: params[:comment],
+                        image: params[:image])
 
-      if params[:image]
-        @post.post_image_name ="#{@post.restaurant_name}.jpg"
-        image = params[:image]
-        File.binwrite("public/post_images/#{@post.post_image_name}",image.read)
-      end
+
 
       if @post.save
         redirect_to action: :index
-        flash[:notice] = "投稿されました🐼"
+        flash[:notice] = "投稿されました(^_-)-☆"
       else
+        flash[:notice] ="投稿に失敗しました(; ･`д･´)"
         render action: :new
       end
 

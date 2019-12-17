@@ -27,25 +27,47 @@
           <div class="tab_content" id="status_content">
             <div class="tab_content_description">
               <p class="c-txtsp">ステータスの内容がここに入ります</p>
+              <% total_cost = 0 %>
+              <% @posts.each do |post| %>
+                <% total_cost += post.cost %>
+              <% end %>
               <p class="customer-rank">現在のあなたの役職は「係長」です</p>
-              <p class="customer-total-amount">今までに使った合計金額は「30000円」です</p>
+              <p class="customer-total-amount">今までに使った合計金額は「<%=total_cost%>円」です</p>
+              <p class="customer-total-restaurant">今までに行ったお店の数は「○○件」です</p>
             </div>
           </div>
           <div class="tab_content" id="restaurants_content">
             <div class="tab_content_description">
-              <p class="c-txtsp">行ったお店の内容がここに入ります</p>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-1"></div>
-              </div>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-2"></div>
-              </div>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-3"></div>
-              </div>
-              <div class="customer-restaurant">
-                <div class="restuarant-image-4"></div>
-              </div>
+              <% @posts.each do |post| %>
+                <div class="restaurant-lists-item">
+                  <% if post.image.attached? %>
+                  <%= image_tag post.image,class: "list-item-image" %>
+                  <div class="item-name">
+                    <p><%= post.restaurant_name %></p>
+                    <% case post.rating %>
+                      <% when 1 %>
+                          <i class="fas fa-star"></i>
+                      <% when 2 %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      <% when 3 %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      <% when 4 %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      <% else %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <% end %>
+                  </div>
+                  <% end %>
+                </div>
+              <% end %>
+              <script type="text/javascript">
+                $('.restaurant-lists-item').hover(function(){
+                  $(this).find('.list-item-image').addClass('img-darken')
+                  },
+                  function(){
+                    $(this).find('.list-item-image').removeClass('img-darken')
+                  });
+              </script>
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
 // Place all the styles related to the mypage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+main{
+  height: auto;
+}
 .mypage-edit-wrapper{
   border: 1px solid;
   height:447px;
@@ -151,7 +154,7 @@
 /*タブ切り替え全体のスタイル*/
 .tabs {
   margin-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -184,9 +187,11 @@ input[name="tab_item"] {
 /*タブ切り替えの中身のスタイル*/
 .tab_content {
   display: none;
-  padding: 40px 40px 0;
+  flex-wrap: wrap;
   clear: both;
   overflow: hidden;
+  background-color: #d9d9d9;
+  border-bottom: 3px solid #5ab4bd;
 }
 
 
@@ -202,10 +207,9 @@ input[name="tab_item"] {
   color: #fff;
 }
 
-.customer-restaurant {
-  width: calc(100%/2);
-  height: calc(100%/2);
-  border-bottom: 3px solid #5ab4bd;
+.restaurant-lists-item{
+  width: 25%;
+  height: 280px;
   background-color: #d9d9d9;
   line-height: 50px;
   font-size: 16px;
@@ -215,12 +219,12 @@ input[name="tab_item"] {
   float: left;
   font-weight: bold;
   transition: all 0.2s ease;
-
+  position: relative;
 }
 .restuarant-image-1{
   background-image: url("panda.jpg");  /* 表示する画像 */
-  width:  180px;       /* ※縦横を同値に */
-  height: 180px;       /* ※縦横を同値に */
+  width:  100%;       /* ※縦横を同値に */
+  height: 271.9px;       /* ※縦横を同値に */
   background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;          /* 複数の画像を横に並べたい場合 */
 }
@@ -238,10 +242,57 @@ input[name="tab_item"] {
   background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;
 }
-.restuarant-image-4{
+.list-item-image{
   background-image: url("panda.jpg");  /* 表示する画像 */
-  width:  180px;       /* ※縦横を同値に */
-  height: 180px;       /* ※縦横を同値に */
+  width:  97%;       /* ※縦横を同値に */
+  height: 271.9px;       /* ※縦横を同値に */
   background-position: center center;  /* 横長画像の中央を基準に表示 */
   display: inline-block;
+  padding: 5px;
+}
+
+.item-name{
+  position: absolute;
+  top: 41%;
+  left: 15%;
+  color: transparent;
+  font-size: 20px;
+}
+
+.restaurant-lists-item .item-name p{
+  transition: 1s;
+  font-weight:600;
+  color:transparent;
+}
+
+.restaurant-lists-item .item-name i{
+  transition: 1s;
+  font-weight:600;
+  color:transparent;
+}
+
+.restaurant-lists-item:hover .item-name p{
+  font-weight:600;
+  color:white;
+}
+
+.restaurant-lists-item:hover .item-name i{
+  font-weight:600;
+  color:yellow;
+}
+
+.img-darken{
+  transition: 1s;
+  filter:brightness(25%);
+}
+
+.mypage-bottom-wrapper{
+  background-color: #d9d9d9;
+  border: 1px solid;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
