@@ -29,6 +29,20 @@ header{
   height: 75px;
   padding: 20px 5px 0 5px;
 }
+
+.panda_logo{
+  height: 67px;
+  position: absolute;
+  top: 9px;
+}
+
+.title{
+  position: absolute;
+  left: 80px;
+  font-size: 40px;
+  top: 17px;
+}
+
 a{
   text-decoration: none;
   color: white;
@@ -61,7 +75,7 @@ footer{
 
 main{
   height:auto;
-  
+
   background-image: url("/panda.jpg");
 
   background-size: cover;

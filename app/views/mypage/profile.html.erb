@@ -38,7 +38,21 @@
                 <div class="restaurant-lists-item">
                   <% if post.image.attached? %>
                   <%= image_tag post.image,class: "list-item-image" %>
-                  <p class="item-name"><%= post.restaurant_name %></p>
+                  <div class="item-name">
+                    <p><%= post.restaurant_name %></p>
+                    <% case post.rating %>
+                      <% when 1 %>
+                          <i class="fas fa-star"></i>
+                      <% when 2 %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      <% when 3 %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      <% when 4 %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      <% else %>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <% end %>
+                  </div>
                   <% end %>
                 </div>
               <% end %>

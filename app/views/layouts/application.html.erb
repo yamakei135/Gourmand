@@ -12,7 +12,8 @@
   <body>
     <header>
      <div class="header-left">
-       <%= link_to("🐷Gourmand", "/") %>
+       <img src="/panda_logo.png" class="panda_logo" alt="">
+       <%= link_to "Gourmand", "/",class: "title" %>
      </div>
      <div class="header-right">
 
@@ -41,7 +42,7 @@
           <%= flash[:notice] %>
         </div>
     <% end %>
-    
+
    <main>
      <%= yield %>
    </main>

@@ -1,6 +1,9 @@
 // Place all the styles related to the mypage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+main{
+  height: auto;
+}
 .mypage-edit-wrapper{
   border: 1px solid;
   height:447px;
@@ -256,15 +259,26 @@ input[name="tab_item"] {
   font-size: 20px;
 }
 
-.restaurant-lists-item .item-name{
+.restaurant-lists-item .item-name p{
   transition: 1s;
   font-weight:600;
   color:transparent;
 }
 
-.restaurant-lists-item:hover .item-name{
+.restaurant-lists-item .item-name i{
+  transition: 1s;
+  font-weight:600;
+  color:transparent;
+}
+
+.restaurant-lists-item:hover .item-name p{
   font-weight:600;
   color:white;
+}
+
+.restaurant-lists-item:hover .item-name i{
+  font-weight:600;
+  color:yellow;
 }
 
 .img-darken{
@@ -273,6 +287,12 @@ input[name="tab_item"] {
 }
 
 .mypage-bottom-wrapper{
+  background-color: #d9d9d9;
+  border: 1px solid;
   height: auto;
-  padding-bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
