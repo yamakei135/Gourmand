@@ -1,7 +1,7 @@
 
      <div class="post-wrapper">
        <%= form_tag '/post/create',method: 'post',class: "post-form",model: @post,local: true, multipart: true do %>
-         <h2>投稿フォーム</h2>
+         <h2>新規投稿</h2>
          <p>店名</p>
          <input type="text" name="restaurant_name" value="" required>
          <p>住所</p>
@@ -11,11 +11,10 @@
          </div>
          <button type="button" name="button" class="map-btn">地図から選択</button><!-- Google mapのAPI使う？ -->
          <p>写真</p>
-         <i class="far fa-image fa-2x"></i>
          <i class="fas fa-plus fa-2x"></i>
          <input name="image"  type="file" class="input-file" required>
          <script type="text/javascript">
-           $('.fa-image').click(function(){
+           $('.fa-plus').click(function(){
              $('.input-file').click()
            });
          </script>

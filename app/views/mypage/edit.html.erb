@@ -1,7 +1,17 @@
 <div class="mypage-edit-wrapper">
-  <%= form_tag("/user/#{current_user.id}/update",method: :post, class: "mypage-edit-form") do %>
+  <%= form_tag "/user/#{current_user.id}/update",method: :post, model: @user, local: true, multipart: true, class: "mypage-edit-form" do %>
     <p class="form-p">プロフィール変更</p>
-    <input name="profile_image" type="file" class="">
+    <div class="profile-image">
+      <% if @user.image.attached? %>
+      <%= image_tag @user.image,class: "user-image" %>
+      <% else %>
+      <img src="/panda_profile.jpg" alt="" class="user-image">
+      <% end %>
+    <div class="edit-btn-user">
+      <p class="profile-image-edit-icon"><i class="fas fa-edit"></i>編集</p>
+    </div>
+    </div>
+    <input name="image" type="file" class="input-file hide">
     <p>ニックネーム</p>
     <input type="name" name="name" class="input-text" value="<%= current_user.name %>">
     <p>メールアドレス</p>
@@ -10,3 +20,8 @@
     <input type="submit" name="" value="登録変更" class="submit-btn">
   <% end %>
 </div>
+<script type="text/javascript">
+  $('.profile-image-edit-icon').click(function(){
+    $('.input-file').click()
+  });
+</script>
