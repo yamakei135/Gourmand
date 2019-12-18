@@ -27,8 +27,12 @@
           <div class="tab_content" id="status_content">
             <div class="tab_content_description">
               <p class="c-txtsp">ステータスの内容がここに入ります</p>
+              <% total_cost = 0 %>
+              <% @posts.each do |post| %>
+                <% total_cost += post.cost %>
+              <% end %>
               <p class="customer-rank">現在のあなたの役職は「係長」です</p>
-              <p class="customer-total-amount">今までに使った合計金額は「30000円」です</p>
+              <p class="customer-total-amount">今までに使った合計金額は<%=total_cost %>円です</p>
             </div>
           </div>
           <div class="tab_content" id="restaurants_content">
