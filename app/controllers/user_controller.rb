@@ -4,7 +4,7 @@ class UserController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+    @user = User.new(name: params[:name], email: params[:email], password: params[:password], profile_image: params[:image])
     # 保存が成功したかどうかで条件分岐する
     @user.save
     if @user.save
@@ -21,6 +21,7 @@ class UserController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
+    @user.image = params[:image]
     @user.save
     flash[:notice]="変更が反映されました"
     redirect_to("/mypage/profile")
@@ -28,4 +29,11 @@ class UserController < ApplicationController
 
   def logout
   end
+
+end
+
+private
+
+def user_params
+  params.permit(:name,:email,:password,:image)
 end
