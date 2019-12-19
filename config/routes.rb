@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'restaurant_map/map' => 'restaurant_map#map'
   get '/'=>'home#top'
   get 'home/about'=>'home#about'
   get 'session/login'=>'session#form'
