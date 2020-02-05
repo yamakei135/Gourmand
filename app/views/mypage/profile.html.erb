@@ -43,19 +43,29 @@
                   <%= image_tag post.image,class: "list-item-image" %>
                   <div class="item-name">
                     <p><%= post.restaurant_name %></p>
-                    <% case post.rating %>
-                      <% when 1 %>
-                          <i class="fas fa-star"></i>
-                      <% when 2 %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                      <% when 3 %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                      <% when 4 %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                      <% else %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <% end %>
-                  </div>
+                    <% if post.rating == 0 %>
+                          <p class="star"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+                    <% elsif post.rating > 0 && post.rating < 1%>
+                          <p class="star"><i class="fas fa-star-half"></i></p>
+                    <% elsif post.rating == 1 %>
+                          <p class="star"><i class="fas fa-star"></i></p>
+                    <% elsif post.rating > 1 && post.rating < 2 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i></p>
+                    <% elsif post.rating == 2 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                    <% elsif post.rating > 2 && post.rating < 3 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i></p>
+                    <% elsif post.rating == 3 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                    <% elsif post.rating > 3 && post.rating < 4 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i></p>
+                    <% elsif post.rating == 4 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+                    <% elsif post.rating > 4 && post.rating < 5 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i></p>
+                    <% elsif post.rating == 5 %>
+                          <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                    <% end %>                  </div>
                   <% end %>
                 </div>
               <% end %>

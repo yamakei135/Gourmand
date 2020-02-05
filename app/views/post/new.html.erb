@@ -20,9 +20,20 @@
          </script>
          <p>予算</p>
          ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
-         <p>評価</p>
+         <div class="range-group hide">
+           <input type="range" min="0" max="5" value="0" name="rating" class="input-range" required>
+          </div>
+         <p>味</p>
          <div class="range-group">
-           <input type="range" min="1" max="5" value="" name="rating" class="input-range" required>
+           <input type="range" min="1" max="5" value="" name="taste" class="input-range" required>
+         </div>
+         <p>雰囲気</p>
+         <div class="range-group">
+           <input type="range" min="1" max="5" value="" name="vibes" class="input-range" required>
+         </div>
+         <p>コスパ</p>
+         <div class="range-group">
+           <input type="range" min="1" max="5" value="" name="price" class="input-range" required>
          </div>
          <script type="text/javascript">
            function sliceMaxLength(elem, maxLength) {
