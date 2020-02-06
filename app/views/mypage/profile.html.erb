@@ -25,16 +25,29 @@
           <label class="tab_item" for="restaurants">行ったお店</label>
           <div class="tab_content" id="status_content">
             <div class="tab_content_description">
-              <p class="c-txtsp">ステータスの内容がここに入ります</p>
+              <p class="c-txtsp">=======あなたの現在のステータスは==========================</p>
               <% total_cost = 0 %>
+              <% restaurant_sum = 0 %>
+              <% total_rating = 0 %>
+              <% average_rating = 0.0 %>
               <% @posts.each do |post| %>
                 <% total_cost += post.cost %>
+                <% total_rating += post.rating %>
+                <% restaurant_sum += 1 %>
               <% end %>
-              <p class="customer-rank">現在のあなたの役職は「係長」です</p>
-              <p class="customer-total-amount">今までに使った合計金額は<%=total_cost %>円です</p>
+              <% average_rating = total_rating.to_f / restaurant_sum.to_f %>
+              <% status_panda = "見習いパンダ" %>
+              <% if restaurant_sum >= 5 && total_cost < 15000 then%>
+                <% status_panda = "新人パンダ" %>
+              <% elsif restaurant_sum < 5 && total_cost >= 15000 then %>
+                <% status_panda = "グルメなパンダ" %>
+              <% end %>
+              <p class="customer-rank">現在のあなたの称号は「<%=status_panda%>」だよ</p>
+              <p class="customer-total-amount">今までに使った合計金額は<%=total_cost %>円だよ</p>
+              <p class="customer-average-rating">今までに行ったお店の平均評価は<%=average_rating%>だよ</p>
+              <p class="c-txtsp">=====================================================</p>
             </div>
-          </div>
-          <div class="tab_content" id="restaurants_content">
+          </div>          <div class="tab_content" id="restaurants_content">
             <div class="tab_content_description">
 
               <% @posts.each do |post| %>
