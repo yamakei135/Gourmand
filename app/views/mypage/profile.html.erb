@@ -2,20 +2,19 @@
       <div class="mypage-top-wrapper">
         <form class="mypage-form">
             <div class="profile-image">
-              <div class="edit-btn">
-                <i class="fas fa-edit image-edit-btn">編集</i>
-              </div>
+              <% if @user.image.attached? %>
+              <%= image_tag @user.image,class: "user-image" %>
+              <% else %>
+              <img src="/panda_profile.jpg" alt="" class="user-image">
+              <% end %>
+
             </div>
 
-            <div class="profile-image-edit edit-form hide">
-              <p>写真をアップロード</p>
-              <input type="file" name="" value="" accept="image/*" capture="enviroment/*" value="画像をアップロード" class="profile-image-edit">
-            </div>
             <p class="profile-name"><%= current_user.name %><i class="fas fa-edit name-edit-btn"><%= link_to "編集", "/mypage/edit", class: "edit-link" %></i></p>
             <div class="name-edit  edit-form">
               <input type="text" class="profile-name-edit hide" name="profile-name" placeholder="名前を入力">
             </div>
-            <input type="submit" name="" value="行ったお店マップへ" class="submit-btn">
+            <a href="/restaurant_map/map"><button type="button" value="行ったお店マップへ" name="button" class="restaurant-map-btn">行ったお店マップへ</button></a>
         </form>
       </div>
       <div class="mypage-bottom-wrapper">
@@ -26,18 +25,32 @@
           <label class="tab_item" for="restaurants">行ったお店</label>
           <div class="tab_content" id="status_content">
             <div class="tab_content_description">
-              <p class="c-txtsp">ステータスの内容がここに入ります</p>
+              <p class="c-txtsp">=======あなたの現在のステータスは==========================</p>
               <% total_cost = 0 %>
+              <% restaurant_sum = 0 %>
+              <% total_rating = 0 %>
+              <% average_rating = 0.0 %>
               <% @posts.each do |post| %>
                 <% total_cost += post.cost %>
+                <% total_rating += post.rating %>
+                <% restaurant_sum += 1 %>
               <% end %>
-              <p class="customer-rank">現在のあなたの役職は「係長」です</p>
-              <p class="customer-total-amount">今までに使った合計金額は「<%=total_cost%>円」です</p>
-              <p class="customer-total-restaurant">今までに行ったお店の数は「○○件」です</p>
+              <% average_rating = total_rating.to_f / restaurant_sum.to_f %>
+              <% status_panda = "見習いパンダ" %>
+              <% if restaurant_sum >= 5 && total_cost < 15000 then%>
+                <% status_panda = "新人パンダ" %>
+              <% elsif restaurant_sum < 5 && total_cost >= 15000 then %>
+                <% status_panda = "グルメなパンダ" %>
+              <% end %>
+              <p class="customer-rank">現在のあなたの称号は「<%=status_panda%>」だよ</p>
+              <p class="customer-total-amount">今までに使った合計金額は<%=total_cost %>円だよ</p>
+              <p class="customer-average-rating">今までに行ったお店の平均評価は<%=average_rating%>だよ</p>
+              <p class="c-txtsp">=====================================================</p>
             </div>
           </div>
           <div class="tab_content" id="restaurants_content">
             <div class="tab_content_description">
+
               <% @posts.each do |post| %>
                 <div class="restaurant-lists-item">
                   <% if post.image.attached? %>
