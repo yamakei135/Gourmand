@@ -51,6 +51,10 @@ class PostController < ApplicationController
     @post.vibes = params[:vibes]
     @post.price = params[:price]
     @post.comment = params[:comment]
+
+    @post.rating = (@post.taste.to_f + @post.vibes.to_f + @post.price.to_f)/3
+    @post.rating = BigDecimal(@post.rating.to_s).floor(1).to_f # 1.24
+    
     @post.save
     flash[:notice]="変更が反映されました"
     redirect_to action: :index
