@@ -24,9 +24,10 @@
                           </div>
 
                             <div class="restaurant-name">
-                              <h2><%= post.restaurant_name %></h2>
+                              <%= link_to(post.restaurant_name,"/post/#{post.id}/detail",method:"post") %>
                             </div>
                         </div>
+
                         <div class="list-bottom">
                           <div class="list-left">
                             <% if post.image.attached? %>
