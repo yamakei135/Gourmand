@@ -1,4 +1,5 @@
 class PostController < ApplicationController
+  before_action :cache_postindex
   def new
   end
 
@@ -33,8 +34,7 @@ class PostController < ApplicationController
   end
 
   def index
-    @post = Post.find_by(posted_by: current_user.id)
-    @posts = Post.where(posted_by: current_user.id)
+    @posts = cache_postindex
   end
 
   def edit
@@ -63,7 +63,7 @@ class PostController < ApplicationController
   def detail
     @post = Post.find_by(id: params[:id])
   end
-  
+
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
@@ -72,7 +72,16 @@ class PostController < ApplicationController
   end
 end
 
+
 private
+
+def cache_postindex
+  @postdatas = Rails.cache.fetch("cache_postindex", expires_in: 60.minutes) do
+    Post.where(posted_by: current_user.id).to_a
+  end
+end
+
+
 
 def post_params
   params.require(:session).permit(:restaurant_name,:restaurant_adress,:cost,:rating,:taste,:vibes,:price,:comment,:image)

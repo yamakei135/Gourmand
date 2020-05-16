@@ -1,6 +1,6 @@
     <div class="container">
 
-        <% if @post %>
+        <% if @posts %>
             <div class="posts-list-wrapper">
               <% @posts.each do |post| %>
                     <div class="posts-lists">
@@ -31,8 +31,10 @@
                         <div class="list-bottom">
                           <div class="list-left">
                             <% if post.image.attached? %>
+
                             <%= image_tag post.image,class: "post-image" %>
                             <% end %>
+
                           </div>
 
                           <div class="list-right">

@@ -17,6 +17,8 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require croppie
+//= require demo_croppie
 $(function(){
   setTimeout("$('.post-flash').slideUp()", 2000)
 })

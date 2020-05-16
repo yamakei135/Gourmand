@@ -4,7 +4,7 @@ class UserController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password], profile_image: params[:image])
+    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
     # 保存が成功したかどうかで条件分岐する
     @user.save
     if @user.save

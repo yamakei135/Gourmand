@@ -42,6 +42,24 @@
               <% elsif restaurant_sum < 5 && total_cost >= 15000 then %>
                 <% status_panda = "グルメなパンダ" %>
               <% end %>
+              <% if restaurant_sum >= 10 && total_cost < 10000 then %>
+                <% status_panda = "安上がりなパンダ" %>
+              <% elsif restaurant_sum >= 10 && total_cost >= 10000 && total_cost < 30000 then %>
+                <% status_panda = "量産型パンダ" %>
+              <% elsif restaurant_sum >= 10 && total_cost >= 30000 then%>
+                <% status_panda = "美食家パンダ" %>
+              <% end %>
+                <% if restaurant_sum >= 20 && total_cost < 20000 then %>
+                  <% status_panda = "食い意地パンダ" %>
+              <% elsif restaurant_sum >= 20 && total_cost >= 20000 && total_cost < 50000  && average_rating >= 3.5 then %>
+                <% status_panda = "口だけパンダ" %>
+              <% elsif restaurant_sum >= 20 && total_cost >= 20000 && total_cost < 50000  && average_rating < 3.5 then%>
+                <% status_panda = "辛口パンダ" %>
+              <% elsif restaurant_sum >= 20 && total_cost >= 50000  && average_rating < 4.0 then%>
+                <% status_panda = "成金パンダ" %>
+              <% elsif restaurant_sum >= 20 && total_cost >= 50000  && average_rating >= 4.0 then%>
+                <% status_panda = "王族パンダ" %>
+              <% end %>
               <p class="customer-rank">現在のあなたの称号は「<%=status_panda%>」だよ</p>
               <p class="customer-total-amount">今までに使った合計金額は<%=total_cost %>円だよ</p>
               <p class="customer-average-rating">今までに行ったお店の平均評価は<%=average_rating%>だよ</p>
