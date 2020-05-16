@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # google map
 gem 'geocoder'
+
 gem 'gmaps4rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -61,3 +62,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
+
+# キャッシュ機能追加
+gem 'redis'
+gem 'redis-rails'
+
+# croppieをrailsで使えるようにするgem
+gem 'croppie_rails'
