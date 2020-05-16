@@ -6,8 +6,6 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :restaurant_adress
       t.text :restaurant_adress_url
       t.text :post_image_name
-      t.float :location_lat
-      t.float :location_lng
       t.integer :cost
       t.integer :rating,null: false
       t.text :comment,limit: 140,null:false

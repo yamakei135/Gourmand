@@ -28,8 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # google map
 gem 'geocoder'
+gem "gmaps4rails"
 
-gem 'gmaps4rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

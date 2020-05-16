@@ -16,8 +16,6 @@ module Gourmand
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
-
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/page_cache"
-
   end
 end

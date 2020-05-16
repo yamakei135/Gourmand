@@ -1,4 +1,3 @@
-
 current directory: C:/Users/keimi/Desktop/programming/Gourmand-app/gourmand2/Gourmand/vendor/bundle/gems/nio4r-2.5.2/ext/nio4r
 C:/Ruby26-x64/bin/ruby.exe -I C:/Ruby26-x64/lib/ruby/2.6.0 -r ./siteconf20200204-16476-8rkotl.rb extconf.rb
 
@@ -11,6 +10,5 @@ make "DESTDIR="
 make: 'all' に対して行うべき事はありません.
 
 current directory: C:/Users/keimi/Desktop/programming/Gourmand-app/gourmand2/Gourmand/vendor/bundle/gems/nio4r-2.5.2/ext/nio4r
-
 make "DESTDIR=" install
 make: 'install' に対して行うべき事はありません.

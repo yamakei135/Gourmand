@@ -1,19 +1,16 @@
 <div class="mypage-edit-wrapper">
 
-
   <%= form_tag "/user/#{current_user.id}/update",method: :post, model: @user, local: true, multipart: true, class: "mypage-edit-form" do %>
 
     <p class="form-p">プロフィール変更</p>
 
     <div class="profile-image">
 
-
       <% if @user.image.attached? %>
       <%= image_tag @user.image,class: "user-image" %>
       <% else %>
       <img src="/panda_profile.jpg" alt="" class="user-image">
       <% end %>
-
 
     <div class="edit-btn-user">
       <p class="profile-image-edit-icon"><i class="fas fa-edit"></i>編集</p>
@@ -97,7 +94,6 @@
 </script>
 
 <!-- ここまで -->
-
     <p>ニックネーム</p>
     <input type="name" name="name" class="input-text" value="<%= current_user.name %>">
     <p>メールアドレス</p>
@@ -108,11 +104,9 @@
 </div>
 <script type="text/javascript">
 
-
   $('.profile-image-edit-icon').click(function(){
     $('.input-file').click()
   });
-
 
 
 </script>
