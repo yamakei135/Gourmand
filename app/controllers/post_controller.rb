@@ -7,6 +7,8 @@ class PostController < ApplicationController
                         restaurant_name: params[:restaurant_name],
                         restaurant_adress: params[:restaurant_adress],
                         restaurant_adress_url: params[:restaurant_adress_url],
+                        location_lat: params[:location_lat],
+                        location_lng: params[:location_lng],
                         cost: params[:cost],
                         rating: params[:rating],
                         comment: params[:comment],

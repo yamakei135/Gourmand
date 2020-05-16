@@ -1,6 +1,6 @@
 <div class="post-wrapper">
   <%= form_tag("/post/#{@post.id}/update",method: :post,class: "post-form") do %>
-    <h2>投稿編集画面</h2>
+    <h2>投稿編集</h2>
     <p>店名</p>
     <input type="text" name="restaurant_name" value="<%= @post.restaurant_name %>">
     <p>住所</p>
@@ -38,9 +38,11 @@
          }
         $(this).parent().find('.input-range').attr('value', index);
       });
+
       $('.name-edit-btn').click(function(){
         $('.profile-name-edit').removeClass('hide');
       });
+
       $('.image-edit-btn').click(function(){
         $('.profile-image-edit').removeClass('hide');
       });

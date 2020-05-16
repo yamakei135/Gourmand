@@ -1,0 +1,2 @@
+module RestaurantMapHelper
+end

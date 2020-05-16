@@ -1,114 +1,128 @@
-<div class="container">
+    <div class="container">
 
-    <% if @post %>
-        <div class="posts-list-wrapper">
-          <% @posts.each do |post| %>
-                <div class="posts-lists">
-                  <div class= "posts-list-item">
-                    <div class="list-upper">
-                      <div class="edit-icon">
-                        <i class="fas fa-ellipsis-h edit_btn_icon fas-<%= post.id %>" id="<%= post.id %>"></i>
-                        <div class="edit-menu menu-<%= post.id %>" id="<%= post.id %>">
-                          <%= link_to("編集","/post/#{post.id}/edit") %>
-                          <p class="delete-txt txt-<%= post.id %>"  id="<%= post.id %>">削除</p>
-                          <i class="fas fa-times times-<%= post.id %>" id="<%= post.id %>"></i>
-                        </div>
+        <% if @post %>
+            <div class="posts-list-wrapper">
+              <% @posts.each do |post| %>
+                    <div class="posts-lists">
+                      <div class= "posts-list-item">
+                        <div class="list-upper">
+                          <div class="edit-icon">
+                            <i class="fas fa-ellipsis-h edit_btn_icon fas-<%= post.id %>" id="<%= post.id %>"></i>
+                            <div class="edit-menu menu-<%= post.id %>" id="<%= post.id %>">
+                              <%= link_to("編集","/post/#{post.id}/edit") %>
+                              <p class="delete-txt txt-<%= post.id %>"  id="<%= post.id %>">削除</p>
+                              <i class="fas fa-times times-<%= post.id %>" id="<%= post.id %>"></i>
+                            </div>
 
-                        <div class="delete-confirm confirm-<%= post.id %>" id="<%= post.id %>">
-                            <p>本当にこの投稿を削除しますか？</p>
-                            <div class="delete-confirm-btn">
-                              <input type="button" name="" value="キャンセル" class="cancel-btn btn-<%= post.id %>"  id="<%= post.id %>">
-                              <%= link_to "削除", "/post/#{post.id}/destroy",method:"post",class: "delete-link" %>
+                            <div class="delete-confirm confirm-<%= post.id %>" id="<%= post.id %>">
+                                <p>本当にこの投稿を削除しますか？</p>
+                                <div class="delete-confirm-btn">
+                                  <input type="button" name="" value="キャンセル" class="cancel-btn btn-<%= post.id %>"  id="<%= post.id %>">
+                                  <%= link_to "削除", "/post/#{post.id}/destroy",method:"post",class: "delete-link" %>
+                                </div>
+                            </div>
+                          </div>
+
+                            <div class="restaurant-name">
+                              <h2><%= post.restaurant_name %></h2>
                             </div>
                         </div>
-                      </div>
-                      <script type="text/javascript">
-                        $('.edit_btn_icon').click(function(){
-                          var id = $(this).attr('id')
-                          $(`.fas-${id}`).removeClass('edit_btn_icon')
-                          $(`.menu-${id}`).show()
-                        });
-                        $('.fa-times').click(function(){
-                          console.log('おはよう')
-                          var id2 = $(this).attr('id')
-                          $(`.fas-${id2}`).addClass('edit-btn_icon')
-                          $(`.menu-${id2}`).hide()
-                        });
-                        $('.delete-txt').click(function(){
-                          var id3 = $(this).attr('id')
-                          $(`.fas-${id3}`).removeClass('edit_btn_icon')
-                          $(`.menu-${id3}`).hide()
-                          $(`.confirm-${id3}`).show()
-                        });
-                        $('.cancel-btn').click(function(){
-                          var id4 = $(this).attr('id')
-                          $(`.menu-${id4}`).hide()
-                          $(`.confirm-${id4}`).hide()
-                        });
-                        $(document).click(function(event) {
-                            if(!$(event.target).closest('.edit-menu,.delete-confirm,.edit-icon').length) {
-                              var id2 = $('.edit-icon').attr('id')
-                              console.log('外側がクリックされました。');
-                              console.log(id2);
-                              $('.edit-menu,.delete-confirm').hide()
-                            } else {
-                              console.log('内側がクリックされました。');
-                            }
-                          });
-                      </script>
-                        <div class="restaurant-name">
-                          <h2><%= post.restaurant_name %></h2>
+                        <div class="list-bottom">
+                          <div class="list-left">
+                            <% if post.image.attached? %>
+                            <%= image_tag post.image,class: "post-image" %>
+                            <% end %>
+                          </div>
+
+                          <div class="list-right">
+                            <div class="restaurant-detail">
+
+                              <p><b>住所</b>:<%= post.restaurant_adress %></p>
+
+                              <p><b>予算</b>:<%= post.cost %>円</p>
+
+                              <% case post.rating %>
+                                <% when 1 %>
+                                    <p class="star"><i class="fas fa-star"></i></p>
+                                <% when 2 %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                                <% when 3 %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                                <% when 4 %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                                <% else %>
+                                      <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                              <% end %>
+                            </div>
+                            <div class="comment">
+                              <b>コメント</b>
+                              <p><%= post.comment %></p>
+                            </div>
+
+                          </div>
                         </div>
-                    </div>
-                    <div class="list-bottom">
-                      <div class="list-left">
-                        <% if post.image.attached? %>
-                        <%= image_tag post.image,class: "post-image" %>
-                        <% end %>
-                      </div>
+                        <p class="post-date"><%= post.created_at.strftime('%Y/%m/%d %H:%M')%></p>
 
-                      <div class="list-right">
-                        <div class="restaurant-detail">
-
-                          <p><b>住所</b>:<%= post.restaurant_adress %></p>
-
-                          <p><b>予算</b>:<%= post.cost %>円</p>
-
-                          <% case post.rating %>
-                            <% when 1 %>
-                                <p class="star"><i class="fas fa-star"></i></p>
-                            <% when 2 %>
-                                  <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                            <% when 3 %>
-                                  <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                            <% when 4 %>
-                                  <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                            <% else %>
-                                  <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                          <% end %>
-                        </div>
-                        <div class="comment">
-                          <b>コメント</b>
-                          <p><%= post.comment %></p>
-                        </div>
 
                       </div>
                     </div>
-                    <p class="post-date"><%= post.created_at.strftime('%Y/%m/%d %H:%M')%></p>
+                <% end %>
+              </div>
+        <% else %>
 
+            <div class="index-container">
+              <div class="index-wrapper">
+                <h2>まだ投稿がありません。<br>行った店を記録してみましょう！</h2>
+                <a href="/post/new"><input type="button" name="" value="投稿" class="index-btn"></a>
+              </div>
+            </div>
+        <% end %>
 
-                  </div>
-                </div>
-            <% end %>
-          </div>
-    <% else %>
+    </div>
+    <script type="text/javascript">
+      $('.edit_btn_icon').click(function(){
+        var id = $(this).attr('id')
+        $(`.fas-${id}`).removeClass('edit_btn_icon')
+        $(`.menu-${id}`).show()
+      });
+      $('.fa-times').click(function(){
+        console.log('おはよう')
+        var id2 = $(this).attr('id')
+        $(`.fas-${id2}`).addClass('edit-btn_icon')
+        $(`.menu-${id2}`).hide()
+      });
+      $('.delete-txt').click(function(){
+        var id3 = $(this).attr('id')
+        $(`.fas-${id3}`).removeClass('edit_btn_icon')
+        $(`.menu-${id3}`).hide()
+        $(`.confirm-${id3}`).show()
+      });
+      $('.cancel-btn').click(function(){
+        var id4 = $(this).attr('id')
+        $(`.menu-${id4}`).hide()
+        $(`.confirm-${id4}`).hide()
+      });
 
-        <div class="index-container">
-          <div class="index-wrapper">
-            <h2>まだ投稿がありません。<br>行った店を記録してみましょう！</h2>
-            <a href="/post/new"><input type="button" name="" value="投稿" class="index-btn"></a>
-          </div>
-        </div>
-    <% end %>
+      $(document).click(function(event) {
 
-</div>
+          if(!$(event.target).closest('.edit-menu,.delete-confirm,.edit-icon').length) {
+            var id2 = $('.edit-icon').attr('id')
+            console.log('外側がクリックされました。');
+            console.log(id2);
+            $('.edit-menu,.delete-confirm').hide()
+          } else {
+            console.log('内側がクリックされました。');
+          }
+        });
+        $(document).ready(function(){
+          console.log("ready");
+          var size = $('.posts-list-item').length;
+          if(size == 1){
+            $('.posts-list-wrapper').css({"height":"576","flex-direction":"row"});
+            $('.posts-lists').css({"position":"absolute","top":"115"});
+          }else{
+            $('.posts-list-wrapper').css("height","auto");
+          }
+        });
+
+    </script>

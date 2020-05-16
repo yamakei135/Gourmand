@@ -22,13 +22,14 @@
         　  <%= link_to("Gourmandとは", "/home/about") %>
         　</li>
         <% if current_user %>
-           <a href="/mypage/profile"><li><%= current_user.name %></li></a>
-           <a href="/post/new"><li>新規投稿</li></a>
-           <a href="/post/index"><li>投稿一覧</li></a>
-           <li><%= link_to "ログアウト",'/session/logout', method: :delete %></li>
+           <a href="/mypage/profile"><li><i class="far fa-user"></i><%= current_user.name %></li></a>
+           <a href="/post/new"><li><i class="far fa-plus-square"></i>新規投稿</li></a>
+           <a href="/post/index"><li><i class="far fa-list-alt"></i>投稿一覧</li></a>
+           <a href="/restaurant_map/map"><li><i class="fas fa-map-marked-alt"></i>店マップ</li></a>
+           <li><i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト",'/session/logout', method: :delete %></li>
         <% else %>
-           <a href="/user/registration"><li>新規登録</li></a>
-           <a href="/session/login"><li>login</li></a>
+           <a href="/user/registration"><li><i class="fas fa-user-plus"></i>新規登録</li></a>
+           <a href="/session/login"><li><i class="fas fa-sign-in-alt"></i>login</li></a>
         <% end %>
 
        </ul>
@@ -48,8 +49,8 @@
    </main>
 
     <footer>
-      ↑なにか背景画像でも入れるよ<br>
-        何を入れるかはまだ未定だよ
+      <h2>Gourmand</h2>
+      <h3><i class="fas fa-robot"></i>Katayose Manufacturing Company, Ltd.</h3>
     </footer>
   </body>
 </html>
