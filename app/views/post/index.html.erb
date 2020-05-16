@@ -27,6 +27,18 @@
                               <%= link_to(post.restaurant_name,"/post/#{post.id}/detail",method:"post") %>
                             </div>
                         </div>
+                        <div class="list-bottom">
+                          <div class="list-left">
+                            <% if post.image.attached? %>
+                            <%= image_tag post.image,class: "post-image" %>
+                            <% end %>
+                          </div>
+
+                          <div class="list-right">
+                            <div class="restaurant-detail">
+
+                              <p><b>住所</b>:<%= post.restaurant_adress %></p>
+
 
                         <div class="list-bottom">
                           <div class="list-left">
@@ -66,6 +78,7 @@
                                 <% elsif post.rating == 5 %>
                                       <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span class="rating-number"><%= post.rating %></span></p>
                                 <% end %>
+
                             </div>
                             <div class="comment">
                               <b>コメント</b>
