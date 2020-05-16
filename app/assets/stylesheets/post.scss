@@ -34,12 +34,27 @@
   display: none;
 }
 
+.preview{
+  height: 150px;
+  border: solid 1px;
+  width: 150px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#image-preview{
+  height: 150px;
+  width:150px;
+}
 .fa-plus{
   border: 1px solid;
   padding: 15px;
   border-radius: 10px;
   cursor: pointer;
+
 }
+
 
 .fa-plus:hover{
   transform: scale(1.01,1.01);
@@ -364,4 +379,12 @@ font-size: 17px;
 
 .fa-times{
   color:red;
+}
+
+.rating-number{
+  color: black;
+}
+
+.hide{
+  display: none;
 }

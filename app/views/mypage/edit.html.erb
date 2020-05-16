@@ -1,27 +1,118 @@
 <div class="mypage-edit-wrapper">
+
+
   <%= form_tag "/user/#{current_user.id}/update",method: :post, model: @user, local: true, multipart: true, class: "mypage-edit-form" do %>
+
     <p class="form-p">プロフィール変更</p>
+
     <div class="profile-image">
+
+
       <% if @user.image.attached? %>
       <%= image_tag @user.image,class: "user-image" %>
       <% else %>
       <img src="/panda_profile.jpg" alt="" class="user-image">
       <% end %>
+
+
     <div class="edit-btn-user">
       <p class="profile-image-edit-icon"><i class="fas fa-edit"></i>編集</p>
     </div>
+
     </div>
-    <input name="image" type="file" class="input-file hide">
+<!-- 写真アップロード -->
+    <input name="image" type="file" class="input-file" id="profile-image">
+
+<!-- sample -->
+<!-- inputからurl取得　→ croppieに渡す → cropする →　DBに格納を実装したい-->
+<!-- 最初はcropを表示させず、画像がアップロードされたときに表示させる -->
+
+<div class="js-croppie">
+  <p>ここにトリミング画面が表示されるよ</p>
+</div>
+<button class="js-crop">押すとトリミングが反映されるはずなんだけど…</button>
+<!-- なぜかクリックすると画面が遷移かつ画像の変更が反映されてしまう（トリミングは反映されず） -->
+
+<div class="js-cropped-image"></div>
+
+<!-- js -->
+<script type="text/javascript">
+
+  $(function() {
+
+    // document.getElementById('profile-image').addEventListener('change', function (e) {
+    //   console.log("profile-image-changed");
+    //   var file = e.target.files[0];
+    //   var blobUrl = window.URL.createObjectURL(file);
+    //   var img = document.getElementById('profile-preview');
+    //   img.src = blobUrl;
+    // });
+
+// inputタグに画像をアップロードした瞬間に元の画像が入れ替わるorモーダル表示してそこでトリミング→トリミングが終わると元の画像がトリミング後の画像に入れ替わる
+
+
+    // inputタグに入れた画像のURL取得
+    document.getElementById('profile-image').addEventListener('change', function (e) { //change→<input>profile-imageの中身が変化したときに発火
+      console.log("profile-image-changed");
+      var file = e.target.files[0];
+      var blobUrl = window.URL.createObjectURL(file);
+      var img = document.getElementById('profile-preview');
+      console.log("profile-image-changed2");
+    var $preview = $('.js-croppie');
+
+    var $croppie = $preview.croppie({
+      // urlの取得をファイルのアップロード後にしたい
+      url: blobUrl,
+      // ↑ここにinputタグにいれた画像のURLを入れる
+      // トリミング画面の見た目の設定
+      viewport: {
+        width: 200,
+        height: 200,
+        type: 'circle'
+      },
+      boundary: {
+        width: 300,
+        height: 300
+      }
+    });
+  });
+
+  // トリミング後の座標を取得してDBに格納(x1,x2,y1,y2)
+
+    $('.js-crop').on('click', function() {
+      // ボタンを押すと座標をDBに送るようにする
+      $croppie.croppie('result', 'blob').then(function(blob) {
+        $croppedImage = $('.js-cropped-image');
+        //↓js-cropped-imageに入ってるhtml要素を空に
+        $croppedImage.html('');
+        // $('<img>').attr('src', blob).appendTo($croppedImage);
+        // $('#profile-image').val(blob);
+        // $('<img>').attr('src', blob).appendTo($croppedImage);
+        console.log(blob);
+        // $(A).appendTo(B) ではBにAが追加される。
+        // 出力された結果をinputタグに入れてDBに格納したい
+      });
+    })
+   })
+</script>
+
+<!-- ここまで -->
+
     <p>ニックネーム</p>
     <input type="name" name="name" class="input-text" value="<%= current_user.name %>">
     <p>メールアドレス</p>
     <input type="email" name="email" class="input-text" value="<%= current_user.email %>">
     <div class=""></div>
-    <input type="submit" name="" value="登録変更" class="submit-btn">
+    <input type="submit" name="" value="登録変更" class="submit-btn js-crop">
   <% end %>
 </div>
 <script type="text/javascript">
+
+
   $('.profile-image-edit-icon').click(function(){
     $('.input-file').click()
   });
+
+
+
 </script>
