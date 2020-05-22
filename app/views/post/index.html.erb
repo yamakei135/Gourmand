@@ -39,21 +39,6 @@
 
                               <p><b>住所</b>:<%= post.restaurant_adress %></p>
 
-
-                        <div class="list-bottom">
-                          <div class="list-left">
-                            <% if post.image.attached? %>
-
-                            <%= image_tag post.image,class: "post-image" %>
-                            <% end %>
-
-                          </div>
-
-                          <div class="list-right">
-                            <div class="restaurant-detail">
-
-                              <p><b>住所</b>:<%= post.restaurant_adress %></p>
-
                               <p><b>予算</b>:<%= post.cost %>円</p>
                                 <% if post.rating == 0 %>
                                       <p class="star"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><span class="rating-number"><%= post.rating %></span></p>

@@ -64,7 +64,7 @@
               <% elsif restaurant_sum >= 20 && total_cost >= 50000  && average_rating >= 4.0 then%>
                 <% status_panda = "王族パンダ" %>
 
-              <% end %>             
+              <% end %>
 
               <p class="customer-rank">現在のあなたの称号は「<%=status_panda%>」だよ</p>
               <p class="customer-total-amount">今までに使った合計金額は<%=total_cost %>円だよ</p>
@@ -79,21 +79,7 @@
                   <% if post.image.attached? %>
                   <%= image_tag post.image,class: "list-item-image" %>
                   <div class="item-name">
-                    <p><%= post.restaurant_name %></p><<<<<<< master
-                    <% case post.rating %>
-                      <% when 1 %>
-                          <i class="fas fa-star"></i>
-                      <% when 2 %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                      <% when 3 %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                      <% when 4 %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                      <% else %>
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <% end %>
-                  </div>
-
+                    <p><%= post.restaurant_name %></p>
                     <% if post.rating == 0 %>
                           <p class="star"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
                     <% elsif post.rating > 0 && post.rating < 1%>
@@ -116,8 +102,8 @@
                           <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i></p>
                     <% elsif post.rating == 5 %>
                           <p class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                    <% end %>                  </div>
-
+                    <% end %>
+                  </div>
                   <% end %>
                 </div>
               <% end %>

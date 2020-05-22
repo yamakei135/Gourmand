@@ -20,6 +20,8 @@
   <div class="map_box01"><div id="map-canvas" style="width: 500px;height: 350px;"></div></div>
   <script>
     var map;
+    var marker = [];
+    var infoWindow = [];
     function initMap() {
       var target = document.getElementById('map-canvas');
       var address = document.getElementById('address').value;
@@ -31,6 +33,21 @@
           //results[0].geometry.location に緯度・経度のオブジェクトが入っている
             center: results[0].geometry.location,
             zoom: 14
+          });
+          var marker = new google.maps.Marker({
+            position: {lat: 43.071044, lng: 141.348485},
+            map: map,
+            animation: google.maps.Animation.DROP,
+            icon: {
+              url: "https://maps.google.com/mapfiles/ms/micons/man.png",
+              scaledSize: new google.maps.Size(30, 30)
+            },
+            label: {
+              text: "チンポ！" ,
+              color: "blueviolet" ,
+              fontSize: "20px" ,
+              fontWeight: "bold"
+            }
           });
           var marker = new google.maps.Marker({
             position: {lat: 43.071044, lng: 141.348485},
