@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_04_071209) do
+ActiveRecord::Schema.define(version: 2020_05_15_163504) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_02_04_071209) do
     t.integer "taste"
     t.integer "vibes"
     t.integer "price"
+    t.float "location_lat"
+    t.float "location_lng"
   end
 
   create_table "users", force: :cascade do |t|
