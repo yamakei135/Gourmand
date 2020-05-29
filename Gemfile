@@ -65,8 +65,8 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 
 # キャッシュ機能追加
-gem 'redis'
-gem 'redis-rails'
+# gem 'redis'
+# gem 'redis-rails'
 
 # croppieをrailsで使えるようにするgem
 gem 'croppie_rails'

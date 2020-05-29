@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-  before_action :cache_postindex
+  # before_action :cache_postindex
   def new
   end
 
@@ -34,7 +34,8 @@ class PostController < ApplicationController
   end
 
   def index
-    @posts = cache_postindex
+    @post = Post.find_by(posted_by: current_user.id)
+    @posts = Post.where(posted_by: current_user.id)
   end
 
   def edit
@@ -74,13 +75,6 @@ end
 
 
 private
-
-def cache_postindex
-  @postdatas = Rails.cache.fetch("cache_postindex", expires_in: 60.minutes) do
-    Post.where(posted_by: current_user.id).to_a
-  end
-end
-
 
 
 def post_params

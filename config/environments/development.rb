@@ -15,7 +15,7 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   # config.cache_store = :null_store
-  config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
+  # config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local

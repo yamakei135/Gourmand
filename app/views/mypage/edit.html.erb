@@ -82,24 +82,26 @@
         $croppedImage = $('.js-cropped-image');
         //↓js-cropped-imageに入ってるhtml要素を空に
         $croppedImage.html('');
+
         // $('<img>').attr('src', blob).appendTo($croppedImage);
         // $('#profile-image').val(blob);
         // $('<img>').attr('src', blob).appendTo($croppedImage);
         console.log(blob);
         // $(A).appendTo(B) ではBにAが追加される。
         // 出力された結果をinputタグに入れてDBに格納したい
+        document.getElementById('trimmed-image').value = blob;
       });
     })
    })
 </script>
-
+<input type="text" name="blob" value="" id="trimmed-image">
 <!-- ここまで -->
     <p>ニックネーム</p>
     <input type="name" name="name" class="input-text" value="<%= current_user.name %>">
     <p>メールアドレス</p>
     <input type="email" name="email" class="input-text" value="<%= current_user.email %>">
     <div class=""></div>
-    <input type="submit" name="" value="登録変更" class="submit-btn js-crop">
+    <input type="submit" name="" value="登録変更" class="submit-btn">
   <% end %>
 </div>
 <script type="text/javascript">
