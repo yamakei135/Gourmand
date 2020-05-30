@@ -4,7 +4,7 @@
 
     <p class="form-p">プロフィール変更</p>
 
-    <div class="profile-image">
+    <div class="profile-image" id="profile-image-box">
 
       <% if @user.image.attached? %>
       <%= image_tag @user.image,class: "user-image" %>
@@ -26,6 +26,9 @@
 
 <div class="js-croppie">
   <p>ここにトリミング画面が表示されるよ</p>
+</div>
+<div class="repost">
+  <button type="button" class="hide" name="button" id="repost">画像を選び直す</button>
 </div>
 <button class="js-crop">押すとトリミングが反映されるはずなんだけど…</button>
 <!-- なぜかクリックすると画面が遷移かつ画像の変更が反映されてしまう（トリミングは反映されず） -->
@@ -50,14 +53,19 @@
 
     // inputタグに入れた画像のURL取得
     document.getElementById('profile-image').addEventListener('change', function (e) { //change→<input>profile-imageの中身が変化したときに発火
-      console.log("profile-image-changed");
+
       var file = e.target.files[0];
       var blobUrl = window.URL.createObjectURL(file);
       var img = document.getElementById('profile-preview');
-      console.log("profile-image-changed2");
-    var $preview = $('.js-croppie');
+      var profImage = document.getElementById('profile-image-box');
+      var $preview = $('.js-croppie');
 
-    var $croppie = $preview.croppie({
+      profImage.classList.add('hide');
+
+      var repost = document.getElementById('repost');
+      repost.classList.remove('hide');
+
+      var $croppie = $preview.croppie({
       // urlの取得をファイルのアップロード後にしたい
       url: blobUrl,
       // ↑ここにinputタグにいれた画像のURLを入れる
@@ -93,6 +101,10 @@
       });
     })
    })
+
+   $('#repost').click(function(){
+     $('.input-file').click()
+   });
 </script>
 <input type="text" name="blob" value="" id="trimmed-image">
 <!-- ここまで -->

@@ -7,8 +7,6 @@ class PostController < ApplicationController
 
       @post = Post.new(posted_by: current_user.id,
                         restaurant_name: params[:restaurant_name],
-                        restaurant_adress: params[:restaurant_adress],
-                        restaurant_adress_url: params[:restaurant_adress_url],
                         cost: params[:cost],
                         rating: params[:rating],
                         taste: params[:taste],

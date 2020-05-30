@@ -4,30 +4,49 @@
          <h2>新規投稿</h2>
          <p>店名</p>
          <input type="text" name="restaurant_name" value="" required>
-         <p>住所</p>
-         <input type="text" name="restaurant_adress" value="">
+         <!-- <p>住所</p>
+         <input type="text" name="restaurant_adress" value=""> -->
          <div class="">
 
          </div>
-         <button type="button" name="button" class="map-btn">地図から選択</button><!-- Google mapのAPI使う？ -->
          <p>写真</p>
-         <i class="fas fa-plus fa-2x"></i>
-
-         <input name="image"  type="file" class="input-file"  id="res-img" required >
-         <div class="preview">
+         <div id="image-btn">
+           <i class="fas fa-plus fa-2x"></i>
+         </div>
+         <div class="hide" id="preview">
            <img id="image-preview">
          </div>
+         <div class="repost">
+           <button type="button" class="hide" name="button" id="repost">画像を選び直す</button>
+         </div>
+         <input name="image"  type="file" class="input-file"  id="res-img" required >
          <script type="text/javascript">
 
            document.getElementById('res-img').addEventListener('change', function (e) {
              var file = e.target.files[0];
              var blobUrl = window.URL.createObjectURL(file);
+
+             var preview = document.getElementById('preview');
+             preview.classList.remove('hide');
+
+             var imgBtn = document.getElementById('image-btn');
+             imgBtn.classList.add('hide');
+
+             var repost = document.getElementById('repost');
+             repost.classList.remove('hide');
+
              var img = document.getElementById('image-preview');
              img.src = blobUrl;
            });
+
            $('.fa-plus').click(function(){
              $('.input-file').click()
            });
+
+           $('#repost').click(function(){
+             $('.input-file').click()
+           });
+
          </script>
          <p>予算</p>
          ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
@@ -75,6 +94,7 @@
          <p>コメント</p>
          <textarea name="comment" rows="4" maxlength="140"></textarea>
          <p class="text-count">140文字まで入力できます。現在<span id="txtlmt">0</span>文字です</p>
+         <input type="submit" name="" value="投稿" class="submit-btn post-submit">
          <script type="text/javascript">
            $("textarea").keyup(function(){
                 var txtcount = $(this).val().length;
@@ -89,7 +109,6 @@
                 }
             });
          </script>
-         <input type="submit" name="" value="投稿" class="submit-btn post-submit">
 
        <% end %>
      </div>

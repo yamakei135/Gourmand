@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_090148) do
+ActiveRecord::Schema.define(version: 2020_05_30_091929) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_090148) do
     t.integer "price"
     t.float "location_lat"
     t.float "location_lng"
+    t.string "restaurant_name"
   end
 
   create_table "users", force: :cascade do |t|

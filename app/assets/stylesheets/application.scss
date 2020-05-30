@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require croppie
- 
+
  */
 
 @import 'font-awesome-sprockets';
@@ -95,7 +95,7 @@ footer h2{
 
 main{
   height:auto;
-  background-image: url("/panda.jpg");
+  background-color:rgba(0,0,0,0.8);
   background-size: cover;
 }
 
@@ -144,4 +144,9 @@ main{
   border-radius: 0 0 2px 2px;
   font-size: 14px;
   z-index: 3;
+}
+
+.croppie-container {
+  width: 100%;
+  height: auto;
 }
