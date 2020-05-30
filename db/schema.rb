@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_031131) do
+ActiveRecord::Schema.define(version: 2020_05_30_090148) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,9 +35,6 @@ ActiveRecord::Schema.define(version: 2020_05_23_031131) do
 
   create_table "posts", force: :cascade do |t|
     t.string "posted_by", null: false
-    t.string "restaurant_name", null: false
-    t.text "restaurant_adress"
-    t.text "restaurant_adress_url"
     t.string "post_image_name"
     t.integer "cost"
     t.float "rating", null: false
