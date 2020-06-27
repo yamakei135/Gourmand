@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6aa9551f50.js" crossorigin="anonymous"></script>
 
   </head>
@@ -13,6 +14,8 @@
   <body>
 
     <header>
+      <div class="header-wrapper">
+
      <div class="header-left">
        <img src="/panda_logo.png" class="panda_logo" alt="">
        <%= link_to "Gourmand", "/",class: "title" %>
@@ -20,9 +23,6 @@
      <div class="header-right">
 
        <ul>
-          <li>
-        　  <%= link_to("Gourmandとは", "/home/about") %>
-        　</li>
         <% if current_user %>
            <a href="/mypage/profile"><li><i class="far fa-user"></i><%= current_user.name %></li></a>
            <a href="/post/new"><li><i class="far fa-plus-square"></i>新規投稿</li></a>
@@ -37,7 +37,8 @@
        </ul>
 
 
-     </div>
+     </div> 
+    </div>
     </header>
 
     <% if flash[:notice] %>

@@ -37,11 +37,6 @@ body{
   font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
 }
 
-.panda_logo{
-  height: 67px;
-  position: absolute;
-  top: 9px;
-}
 
 .title{
   position: absolute;
@@ -149,4 +144,52 @@ main{
 .croppie-container {
   width: 100%;
   height: auto;
+}
+
+@media screen and (max-width:639px) {
+/*スマホ用のcssを記述*/
+  .header-wrapper{
+    display:flex;
+    flex-direction: column;
+  }
+  .panda_logo{
+    height: 67px;
+    top: 9px;
+  }
+
+  header{
+    height:160px;
+  }
+
+  footer {
+    padding-top: 14px;
+    height: 140px;
+    background-color: green;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: larger;
+}
+.login-wrapper {
+    border: 1px solid;
+    height: 450px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 55px;
+}
+}
+
+
+@media only screen and (min-width:640px) and (max-width:1023px) {
+/*tablet用のcssを記述*/
+}
+
+@media screen and (min-width:1024px) {
+/*pc用のcssを記述*/
+.panda_logo{
+  height: 67px;
+  position: absolute;
+  top: 9px;
+}
 }
