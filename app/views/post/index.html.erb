@@ -30,7 +30,7 @@
 
                         <div class="list-bottom">
                           <div class="list-left">
-                            <% if post.image.attached? %>
+                            <% if post.image.present? %>
 
                             <%= image_tag post.image,class: "post-image" %>
                             <% end %>

@@ -29,7 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 # google map
 gem 'geocoder'
 gem "gmaps4rails"
-
+gem 'dotenv-rails'
+gem 'aws-sdk-s3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
