@@ -72,6 +72,9 @@ gem 'font-awesome-sass', '~> 5.4.1'
 # croppieをrailsで使えるようにするgem
 gem 'croppie_rails'
 
-group :production do
-  gem 'pg'
-end
+#aws
+gem "aws-sdk-s3", require: false
+
+#group :production do
+#  gem 'pg'
+#end
