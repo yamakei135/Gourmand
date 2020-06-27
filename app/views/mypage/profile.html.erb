@@ -2,12 +2,14 @@
       <div class="mypage-top-wrapper">
         <form class="mypage-form">
             <div class="profile-image">
-              <% if @user.image.attached? %>
-              <%= image_tag @user.image,class: "user-image" %>
+              <% if @user.image_url %>
+              <img src="<%= @user.image_url %>" alt="" style = "height:200px; width:200px;">
               <% else %>
               <img src="/panda_profile.jpg" alt="" class="user-image">
               <% end %>
+
             </div>
+
 
             <p class="profile-name"><%= current_user.name %><i class="fas fa-edit name-edit-btn"><%= link_to "編集", "/mypage/edit", class: "edit-link" %></i></p>
             <div class="name-edit  edit-form">

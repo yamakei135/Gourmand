@@ -1,6 +1,6 @@
     <div class="container">
 
-        <% if @posts %>
+        <% if @post %>
             <div class="posts-list-wrapper">
               <% @posts.each do |post| %>
                     <div class="posts-lists">
@@ -24,7 +24,7 @@
                           </div>
 
                             <div class="restaurant-name">
-                              <%= link_to(post.restaurant_name,"/post/#{post.id}/detail",method:"post") %>
+                              <%= post.restaurant_name %>
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                           <div class="list-right">
                             <div class="restaurant-detail">
 
-
+                              <%= post.restaurant_adress %>
                               <p><b>予算</b>:<%= post.cost %>円</p>
                                 <% if post.rating == 0 %>
                                       <p class="star"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><span class="rating-number"><%= post.rating %></span></p>

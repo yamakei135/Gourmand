@@ -23,7 +23,7 @@ class UserController < ApplicationController
     @user.email = params[:email]
   # user DBにblobUrl保存
   # imgタグにurl指定
-    @user.image_url = params[:blob]
+    @user.image_url = params[:base64]
   # if params[:image].present?
   #   @user.image = params[:image]
   # end

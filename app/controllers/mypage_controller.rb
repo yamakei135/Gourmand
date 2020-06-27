@@ -11,5 +11,4 @@ class MypageController < ApplicationController
 
   private
 
-
 end

@@ -3,37 +3,133 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex" />
-<title>サンプルコード 【JS】GoogleMapや地名検索をページに埋め込んで位置情報を取得する方法</title>
-​
+<title>ぐるもん あしあとマップ</title>​
 </head>
-​
+
 <body>
-  <h1>現在地を取得</h1>
-  <p>住所や駅名、目印などで検索できます。</p>
+  <h1>あしあとMAP</h1>
+  <p>今までに行ったお店がわかるよ！</p>
   <form onsubmit="return false;">
-    <input type="text" value="コンビニ" id="address">
-    <button type="button" value="検索" id="map_button">検索</button>
+    <input type="text" value="コンビニ" id="address" class="hide">
+    <button type="button" value="検索" id="map_button" class="hide">検索</button>
   </form>
-  <!-- 地図を表示させる要素 -->
   <div class="map_box01"><div id="map-canvas" style="width: 500px;height: 350px;"></div></div>
   <script>
     var map;
+    var marker = [];
+    var infoWindow = [];
+    var markerData = [];
+    var center = {
+      lat: 43.066052, // 緯度
+      lng: 141.348294 // 経度
+    };
+    <% @posts.each do |post| %>
+      if ("<%= post.location_lat %>" != ""){
+        markerData.push({
+          name: '<%= post.restaurant_name %>',
+          lat: <%= post.location_lat %>,
+          lng: <%= post.location_lng %>
+        });
+      }
+    <% end %>
+    console.log(markerData);
     function initMap() {
-      map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: {lat: 35.000, lng: 135.000},
-        zoom: 5
+      var target = document.getElementById('map-canvas');
+      var address = document.getElementById('address').value;
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function(results, status){
+        if (status === 'OK' && results[0]){
+          map = new google.maps.Map(target, {
+            center: center,
+            zoom: 11
+          });
+          for (var i = 0; i < markerData.length; i++) {
+            markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']});
+            var marker = new google.maps.Marker({
+              position: markerLatLng,
+              map: map,
+              animation: google.maps.Animation.DROP,
+              icon: {
+                url: "/dog_footprint.png",
+                scaledSize: new google.maps.Size(30,30)
+              }
+            });
+            infoWindow[i] = new google.maps.InfoWindow({
+              content: '<div class="sample">' + markerData[i]['name'] + '</div>'
+            });
+          }
+        }else{
+          alert('失敗しました。理由: ' + status);
+          return;
+        }
       });
     }
   </script>
-  <p>マーカーのある位置の<br>
-    緯度 <input type="text" id="lat" value=""><br>
-    経度 <input type="text" id="lng" value=""><br>
-    地図上をクリックするとマーカーを移動できます。</p>
+  <script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&region=JP&key=AIzaSyAFiiQ07NNboLBE3ZXTC8Zrs16PMcRJs-E&callback=initMap&libraries=places" async defer></script>
+
+<script type="text/javascript">
+  function markerEvent(i) {
+    marker[i].addListener('click', function() {
+      infoWindow[i].open(map, marker[i]);
+    });
+  }
+  var button = document.getElementById("map_button");
+  function initAutocomplete(){
+    //対応させるテキストボックス
+    var input = document.getElementById('address');
+    //プレイスを検索する領域
+    var LatLngFrom = new google.maps.LatLng(34.5,138.0);
+    var LatLngTo   = new google.maps.LatLng(35.5,139.0);
+    var bounds = new google.maps.LatLngBounds(LatLngFrom, LatLngTo);
+　　   //オートコンプリートのオプショ
+    var options = {
+      types: ['establishment'],                      // 検索タイプ
+      bounds: bounds,                            // 範囲優先検索
+      componentRestrictions: {country: 'jp'}     // 日本国内の住所のみ
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+  }
+  window.onload = function(){
+    //getMap.getAddress();
+    // フォームに入力された住所情報を取得
+    var address = document.getElementById("address").value;
+    // 取得した住所を引数に指定してcodeAddress()関数を実行
+    //codeAddress(address);
+    initAutocomplete();
+  }
+  // button.onclick = function() {
+  //   var target = document.getElementById('map-canvas');
+  //   // フォームに入力された住所情報を取得
+  //   var address = document.getElementById("address").value;
+  //   // 取得した住所を引数に指定してcodeAddress()関数を実行
+  //   var geocoder = new google.maps.Geocoder();
+  //   geocoder.geocode({ address: address }, function(results, status){
+  //     //ステータスが OK で results[0] が存在すれば、地図を生成
+  //     if (status === 'OK' && results[0]){
+  //                 console.log("アロハ");
+  //       map = new google.maps.Map(target, {
+  //       //results[0].geometry.location に緯度・経度のオブジェクトが入っている
+  //         center: results[0].geometry.location,
+  //         zoom: 14
+  //       });
+  //       var marker = new google.maps.Marker({
+  //         position: results[0].geometry.location,
+  //         map: map,
+  //         animation: google.maps.Animation.DROP,
+  //         icon: {
+  //           url: "/dog_footprint.png",
+  //           scaledSize: new google.maps.Size(30, 30)
+  //         }
+  //       });
+  //     }else{
+  //     //ステータスが OK 以外の場合や results[0] が存在しなければ、アラートを表示して処理を中断
+  //       alert('失敗しました。理由: ' + status);
+  //       return;
+  //     }
+  //   });
+  // }
+</script>
 ​
-​
-​
-  <!-- APIを取得 -->
-  <script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&region=JP&key=AIzaSyAFiiQ07NNboLBE3ZXTC8Zrs16PMcRJs-E&callback=initMap" async defer></script>
 ​
 </body>
 </html>

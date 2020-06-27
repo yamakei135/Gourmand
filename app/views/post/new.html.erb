@@ -1,114 +1,148 @@
+<div class="post-wrapper">
+  <%= form_tag '/post/create',method: 'post',class: "post-form",model: @post,local: true, multipart: true do %>
+    <h2>新規投稿</h2>
+    <p>名前</p>
+    <input type="text" name="restaurant_name" value="" id="restaurant_name">
+    <p>住所</p>
+    <input type="text" name="restaurant_adress" value="" id="restaurant_address"><button type="button"id="ok_button">OK</button>
+    <script type="text/javascript">
+    var ok_button = document.getElementById("ok_button");
+    ok_button.onclick = function() {
+      geocode();
+    }
+    </script>
+    <div class="">
+    </div>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&region=JP&key=AIzaSyAFiiQ07NNboLBE3ZXTC8Zrs16PMcRJs-E&libraries=places" async defer></script>
 
-     <div class="post-wrapper">
-       <%= form_tag '/post/create',method: 'post',class: "post-form",model: @post,local: true, multipart: true do %>
-         <h2>新規投稿</h2>
-         <p>店名</p>
-         <input type="text" name="restaurant_name" value="" required>
-         <!-- <p>住所</p>
-         <input type="text" name="restaurant_adress" value=""> -->
-         <div class="">
+    <script type="text/javascript">
+    function initAutocomplete(){
+      //対応させるテキストボックス
+      var input = document.getElementById('restaurant_address');
+      //プレイスを検索する領域
+      var LatLngFrom = new google.maps.LatLng(34.5,138.0);
+      var LatLngTo   = new google.maps.LatLng(35.5,139.0);
+      var bounds = new google.maps.LatLngBounds(LatLngFrom, LatLngTo);
+    　　  //オートコンプリートのオプション
+      var options = {
+        types: ['establishment'],                      // 検索タイプ
+        bounds: bounds,                            // 範囲優先検索
+        componentRestrictions: {country: 'jp'}     // 日本国内の住所のみ
+      };
+      autocomplete = new google.maps.places.Autocomplete(input, options);
+    }
+    window.onload = function(){
+      // フォームに入力された住所情報を取得
+      var address = document.getElementById("restaurant_address").value;
+      // 取得した住所を引数に指定してcodeAddress()関数を実行
+      //codeAddress(address);
+      initAutocomplete();
+    }
+    //geocode();
+    function geocode() {
+      var address = document.getElementById('restaurant_address').value;
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function(results, status){
+        //ステータスが OK で results[0] が存在すれば、地図を生成
+        if (status === 'OK' && results[0]){
+          //お店の緯度・経度をDBに格納
+          document.getElementById('loc_lat').value = results[0].geometry.location.lat();
+          document.getElementById('loc_lng').value = results[0].geometry.location.lng();
+        }else{
+        //ステータスが OK 以外の場合や results[0] が存在しなければ、アラートを表示して処理を中断
+          alert('失敗しました。理由: ' + status);
+          return;
+        }
+      });
+    }
+    </script>
+    <input type="text" name="location_lat" id="loc_lat" value="" class="hide"><br>
+    <input type="text" name="location_lng" id="loc_lng" value="" class="hide"><br>
+    <p>写真</p>
+    <i class="fas fa-plus fa-2x"></i>
 
-         </div>
-         <p>写真</p>
-         <div id="image-btn">
-           <i class="fas fa-plus fa-2x"></i>
-         </div>
-         <div class="hide" id="preview">
-           <img id="image-preview">
-         </div>
-         <div class="repost">
-           <button type="button" class="hide" name="button" id="repost">画像を選び直す</button>
-         </div>
-         <input name="image"  type="file" class="input-file"  id="res-img" required >
-         <script type="text/javascript">
 
-           document.getElementById('res-img').addEventListener('change', function (e) {
-             var file = e.target.files[0];
-             var blobUrl = window.URL.createObjectURL(file);
+    <input name="image"  type="file" class="input-file"  id="res-img" required >
+    <div class="preview">
+      <img id="image-preview">
+    </div>
+    <script type="text/javascript">
 
-             var preview = document.getElementById('preview');
-             preview.classList.remove('hide');
+      document.getElementById('res-img').addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        var blobUrl = window.URL.createObjectURL(file);
+        var img = document.getElementById('image-preview');
+        img.src = blobUrl;
+      });
 
-             var imgBtn = document.getElementById('image-btn');
-             imgBtn.classList.add('hide');
+      $('.fa-plus').click(function(){
+        $('.input-file').click()
+      });
+    </script>
+    <p>予算</p>
+    ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
 
-             var repost = document.getElementById('repost');
-             repost.classList.remove('hide');
-
-             var img = document.getElementById('image-preview');
-             img.src = blobUrl;
-           });
-
-           $('.fa-plus').click(function(){
-             $('.input-file').click()
-           });
-
-           $('#repost').click(function(){
-             $('.input-file').click()
-           });
-
-         </script>
-         <p>予算</p>
-         ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
-         <div class="range-group hide">
-           <input type="range" min="0" max="5" value="0" name="rating" class="input-range" required>
-          </div>
-         <p>味</p>
-         <div class="range-group">
-           <input type="range" min="1" max="5" value="" name="taste" class="input-range" required>
-         </div>
-         <p>雰囲気</p>
-         <div class="range-group">
-           <input type="range" min="1" max="5" value="" name="vibes" class="input-range" required>
-         </div>
-         <p>コスパ</p>
-         <div class="range-group">
-           <input type="range" min="1" max="5" value="" name="price" class="input-range" required>
-         </div>
-         <script type="text/javascript">
-           function sliceMaxLength(elem, maxLength) {
-             elem.value = elem.value.slice(0, maxLength);
-            }
-           $('.range-group').each(function() {
-             for (var i = 0; i < 5; i ++) {
-               $(this).append('<a>');
-             }
-           });
-           $('.range-group>a').on('click', function() {
-              var index = $(this).index();
-             $(this).siblings().removeClass('on');
-              for (var i = 0; i < index; i++) {
-                 $(this).parent().find('a').eq(i).addClass('on');
-              }
-             $(this).parent().find('.input-range').attr('value', index);
-           });
-
-           $('.name-edit-btn').click(function(){
-             $('.profile-name-edit').removeClass('hide');
-           });
-
-           $('.image-edit-btn').click(function(){
-             $('.profile-image-edit').removeClass('hide');
-           });
-         </script>
-         <p>コメント</p>
-         <textarea name="comment" rows="4" maxlength="140"></textarea>
-         <p class="text-count">140文字まで入力できます。現在<span id="txtlmt">0</span>文字です</p>
-         <input type="submit" name="" value="投稿" class="submit-btn post-submit">
-         <script type="text/javascript">
-           $("textarea").keyup(function(){
-                var txtcount = $(this).val().length;
-                $("#txtlmt").text(txtcount);
-                if(txtcount == 0){
-                  $("#txtlmt").text("0");
-                }
-                if(txtcount >= 140){
-                  $("#txtlmt").css("color","red");
-                } else {
-                  $("#txtlmt").css("color","#333");
-                }
-            });
-         </script>
-
-       <% end %>
+    <div class="range-group hide">
+      <input type="range" min="0" max="5" value="0" name="rating" class="input-range" required>
      </div>
+    <p>味</p>
+    <div class="range-group">
+      <input type="range" min="1" max="5" value="" name="taste" class="input-range" required>
+    </div>
+    <p>雰囲気</p>
+    <div class="range-group">
+      <input type="range" min="1" max="5" value="" name="vibes" class="input-range" required>
+    </div>
+    <p>コスパ</p>
+    <div class="range-group">
+      <input type="range" min="1" max="5" value="" name="price" class="input-range" required>
+
+    </div>
+    <script type="text/javascript">
+      function sliceMaxLength(elem, maxLength) {
+        elem.value = elem.value.slice(0, maxLength);
+       }
+      $('.range-group').each(function() {
+        for (var i = 0; i < 5; i ++) {
+          $(this).append('<a>');
+        }
+      });
+      $('.range-group>a').on('click', function() {
+         var index = $(this).index();
+        $(this).siblings().removeClass('on');
+         for (var i = 0; i < index; i++) {
+            $(this).parent().find('a').eq(i).addClass('on');
+         }
+        $(this).parent().find('.input-range').attr('value', index);
+      });
+
+      $('.name-edit-btn').click(function(){
+        $('.profile-name-edit').removeClass('hide');
+      });
+
+      $('.image-edit-btn').click(function(){
+        $('.profile-image-edit').removeClass('hide');
+      });
+    </script>
+    <p>コメント</p>
+    <textarea name="comment" rows="4" maxlength="140"></textarea>
+    <p class="text-count">140文字まで入力できます。現在<span id="txtlmt">0</span>文字です</p>
+    <script type="text/javascript">
+      $("textarea").keyup(function(){
+           var txtcount = $(this).val().length;
+           $("#txtlmt").text(txtcount);
+           if(txtcount == 0){
+             $("#txtlmt").text("0");
+           }
+           if(txtcount >= 140){
+             $("#txtlmt").css("color","red");
+           } else {
+             $("#txtlmt").css("color","#333");
+           }
+       });
+    </script>
+
+    <input type="submit" name="" value="投稿" class="submit-btn post-submit" id="submit_button">
+
+  <% end %>
+</div>

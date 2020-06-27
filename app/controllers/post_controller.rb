@@ -13,8 +13,10 @@ class PostController < ApplicationController
                         vibes: params[:vibes],
                         price: params[:price],
                         comment: params[:comment],
+                        location_lat: params[:location_lat],
+                        location_lng: params[:location_lng],
+                        restaurant_adress: params[:restaurant_adress],
                         image: params[:image])
-
 
       @post.rating = (@post.taste.to_f + @post.vibes.to_f + @post.price.to_f)/3
       @post.rating = BigDecimal(@post.rating.to_s).floor(1).to_f # 1.24
