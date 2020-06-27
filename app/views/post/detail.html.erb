@@ -12,7 +12,7 @@
             <p class="restaurant-name"><%= @post.restaurant_name %><i class="fas fa-edit name-edit-btn">編集</i></p>
             </div>
             <div class="list-left">
-              <% if @post.image.attached? %>
+              <% if @post.image.present? %>
               <%= image_tag @post.image,class: "post-image" %>
               <% end %>
             </div>
