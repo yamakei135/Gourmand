@@ -389,6 +389,47 @@ font-size: 17px;
 
 @media screen and (max-width:639px) {
 /*スマホ用のcssを記述*/
+.posts-list-item {
+    width: 100%;
+    height: 485px;
+    background-color: whitesmoke;
+    border: 1px solid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.list-bottom {
+    display: flex;
+    flex-direction: column;
+}
+.restaurant-name {
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 6px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.fa-ellipsis-h:before {
+    font-size: 40px;
+    content: "\f141";
+}
+
+.edit-menu {
+    border: 1px solid;
+    display: none;
+    position: absolute;
+    top: 31px;
+    right: -39.5%;
+    width: 160px;
+    text-align: center;
+    background-color: white;
+    font-size: 30px;
+}
+.post-image {
+    height: 230px;
+    width: 220px;
+    margin-left: 10px;
+}
 }
 
 @media only screen and (min-width:640px) and (max-width:1023px) {
