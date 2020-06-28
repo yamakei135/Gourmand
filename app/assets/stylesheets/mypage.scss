@@ -343,9 +343,17 @@ input[name="tab_item"] {
   color:white;
 }
 
+.user-profile{
+  height:200px;
+  width:200px;
+}
+
 @media screen and (max-width:639px) {
 /*スマホ用のcssを記述*/
-
+  .user-profile{
+    height:260px;
+    width:260px;
+  }
   .restaurant-lists-item{
     width:100%;
   }

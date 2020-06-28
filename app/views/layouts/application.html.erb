@@ -14,7 +14,6 @@
   <body>
 
     <header>
-      <div class="header-wrapper">
 
      <div class="header-left">
        <img src="/panda_logo.png" class="panda_logo" alt="">
@@ -22,7 +21,7 @@
      </div>
      <div class="header-right">
 
-       <ul>
+       <ul class="pc-links">
         <% if current_user %>
            <a href="/mypage/profile"><li><i class="far fa-user"></i><%= current_user.name %></li></a>
            <a href="/post/new"><li><i class="far fa-plus-square"></i>新規投稿</li></a>
@@ -35,10 +34,27 @@
         <% end %>
 
        </ul>
+     </div>
+       <button class="btn-menu">MENU</button>
+       <div class="slide-menu">
 
+       <nav>
+         <ul>
+           <% if current_user %>
+              <a href="/mypage/profile"><li><i class="far fa-user"></i><%= current_user.name %></li></a>
+              <a href="/post/new"><li><i class="far fa-plus-square"></i>新規投稿</li></a>
+              <a href="/post/index"><li><i class="far fa-list-alt"></i>投稿一覧</li></a>
+              <a href="/restaurant_map/map"><li><i class="fas fa-map-marked-alt"></i>店マップ</li></a>
+              <li><i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト",'/session/logout', method: :delete %></li>
+           <% else %>
+              <a href="/user/registration"><li><i class="fas fa-user-plus"></i>新規登録</li></a>
+              <a href="/session/login"><li><i class="fas fa-sign-in-alt"></i>login</li></a>
+           <% end %>
 
-     </div> 
-    </div>
+         </ul>
+       </nav>
+     </div>
+
     </header>
 
     <% if flash[:notice] %>
@@ -46,7 +62,20 @@
           <%= flash[:notice] %>
         </div>
     <% end %>
+    <script type="text/javascript">
+      var menubtn = document.querySelector('.btn-menu');
+      var nav = document.querySelector('nav');
+      console.log('js効いてる');
 
+      menubtn.addEventListener('click', () => {
+        nav.classList.toggle('open-menu')
+        if (menubtn.innerHTML === 'MENU') {
+          menubtn.innerHTML = 'CLOSE';
+            } else {
+          menubtn.innerHTML = 'MENU';
+}
+      });
+    </script>
    <main>
      <%= yield %>
    </main>

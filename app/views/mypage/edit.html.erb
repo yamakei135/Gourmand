@@ -30,6 +30,8 @@
 </div>
 <!-- なぜかクリックすると画面が遷移かつ画像の変更が反映されてしまう（トリミングは反映されず） -->
 <div class="js-cropped-image"></div>
+<button type="button" class="js-crop restaurant-map-btn">OK</button>
+
 
 <!-- js -->
 <script type="text/javascript">
@@ -98,7 +100,7 @@
     <p>メールアドレス</p>
     <input type="email" name="email" class="input-text" value="<%= current_user.email %>">
     <div class=""></div>
-    <input type="submit" name="" value="登録変更" class="submit-btn">
+    <button type="submit" value="ログイン" name="button" class="restaurant-map-btn">変更する</button>
   <% end %>
 </div>
 <script type="text/javascript">
@@ -109,4 +111,3 @@
 
 
 </script>
-<button class="js-crop">押すとトリミングが反映されるはずなんだけど…</button>

@@ -14,7 +14,20 @@
     <div class="">
     </div>
     <script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&region=JP&key=AIzaSyAFiiQ07NNboLBE3ZXTC8Zrs16PMcRJs-E&libraries=places" async defer></script>
+    <script type="text/javascript">
+      const menubtn = document.querySelector('.btn-menu');
+      const nav = document.querySelector('nav');
+      console.log('js効いてる');
 
+      menubtn.addEventListener('click', () => {
+        nav.classList.toggle('open-menu')
+        if (menubtn.innerHTML === 'MENU') {
+          menubtn.innerHTML = 'CLOSE';
+            } else {
+          menubtn.innerHTML = 'MENU';
+}
+      });
+    </script>
     <script type="text/javascript">
     function initAutocomplete(){
       //対応させるテキストボックス
@@ -142,7 +155,7 @@
        });
     </script>
 
-    <input type="submit" name="" value="投稿" class="submit-btn post-submit" id="submit_button">
+    <button type="submit" value="ログイン" name="button" class="restaurant-map-btn">投稿する</button>
 
   <% end %>
 </div>

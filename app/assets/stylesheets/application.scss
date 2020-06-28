@@ -38,6 +38,7 @@ body{
 }
 
 
+
 .title{
   position: absolute;
   left: 80px;
@@ -105,8 +106,8 @@ main{
   padding: 0.25em 0.5em;
   text-decoration: none;
   color: #FFF;
-  background: green;/*色*/
-  border: solid 1px white;/*線色*/
+  background: green;
+  border: solid 1px white;
   border-radius: 4px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
   text-shadow: 0 1px 0 rgba(0,0,0,0.2);
@@ -117,7 +118,6 @@ main{
 }
 
 .submit-btn:active {
-  /*押したとき*/
   border: solid 1px #03A9F4;
   box-shadow: none;
   text-shadow: none;
@@ -145,22 +145,32 @@ main{
   width: 100%;
   height: auto;
 }
+.btn-menu{
+  diplay:none;
+}
+
+header button{
+  display:none;
+}
 
 @media screen and (max-width:639px) {
 /*スマホ用のcssを記述*/
-  .header-wrapper{
-    display:flex;
-    flex-direction: column;
-  }
+
   .panda_logo{
     height: 67px;
     top: 9px;
   }
 
   header{
-    height:160px;
+    height:100px;
   }
+  .title {
+    position: absolute;
+    left: 85px;
+    font-size: 45px;
+    top: 30px;
 
+}
   footer {
     padding-top: 14px;
     height: 140px;
@@ -178,6 +188,60 @@ main{
     justify-content: center;
     padding-top: 55px;
 }
+
+.header-right a{
+  color:black;
+}
+nav {
+  background: #fff;
+  position: absolute;
+  z-index: 3;
+  top: 120px;
+  right: 0;
+  overflow-x: hidden;
+  text-align: center;
+  width: 0;
+  color:black;
+  color: green;
+  opacity: 0.94;
+  font-size: 30px;
+  padding-top: 45px;
+  transition: .3s;
+  height: 700px;
+}
+
+nav a{
+  color:green;
+}
+
+nav.open-menu {
+  width: 100%;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 45px;
+}
+
+.btn-menu {
+  display:block;
+  border: 2px solid #fff;
+  background: green;
+  color: #fff;
+  opacity:0.9;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  position: absolute;
+  top: 48px;
+  right: 0px;
+
+}
+
+.header-right ul{
+  display:none;
+}
 }
 
 
@@ -192,4 +256,10 @@ main{
   position: absolute;
   top: 9px;
 }
+
+.slide-menu{
+  display:none;
+}
+
+
 }
