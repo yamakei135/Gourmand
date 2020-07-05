@@ -4,7 +4,7 @@
     <p>名前</p>
     <input type="text" name="restaurant_name" value="" id="restaurant_name">
     <p>住所</p>
-    <input type="text" name="restaurant_adress" value="" id="restaurant_address"><button type="button"id="ok_button">OK</button>
+    <input type="text" name="restaurant_adress" value="" id="restaurant_address"><button type="button" id="ok_button">OK</button>
     <script type="text/javascript">
     var ok_button = document.getElementById("ok_button");
     ok_button.onclick = function() {
@@ -13,7 +13,25 @@
     </script>
     <div class="">
     </div>
-    <script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&region=JP&key=AIzaSyAFiiQ07NNboLBE3ZXTC8Zrs16PMcRJs-E&libraries=places" async defer></script>
+    <script type="text/javascript">
+
+    function initAutocomplete(){
+      //対応させるテキストボックス
+      var input = document.getElementById('restaurant_address');
+      //プレイスを検索する領域
+      var LatLngFrom = new google.maps.LatLng(34.5,138.0);
+      var LatLngTo   = new google.maps.LatLng(35.5,139.0);
+      var bounds = new google.maps.LatLngBounds(LatLngFrom, LatLngTo);
+      //オートコンプリートのオプション
+      var options = {
+        types: ['establishment'],                      // 検索タイプ
+        bounds: bounds,                            // 範囲優先検索
+        componentRestrictions: {country: 'jp'}     // 日本国内の住所のみ
+      };
+      autocomplete = new google.maps.places.Autocomplete(input, options);
+    }
+  </script>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&region=JP&key=AIzaSyAFiiQ07NNboLBE3ZXTC8Zrs16PMcRJs-E&&callback=initAutocomplete&libraries=places" async defer></script>
     <script type="text/javascript">
       const menubtn = document.querySelector('.btn-menu');
       const nav = document.querySelector('nav');
@@ -29,21 +47,6 @@
       });
     </script>
     <script type="text/javascript">
-    function initAutocomplete(){
-      //対応させるテキストボックス
-      var input = document.getElementById('restaurant_address');
-      //プレイスを検索する領域
-      var LatLngFrom = new google.maps.LatLng(34.5,138.0);
-      var LatLngTo   = new google.maps.LatLng(35.5,139.0);
-      var bounds = new google.maps.LatLngBounds(LatLngFrom, LatLngTo);
-    　　  //オートコンプリートのオプション
-      var options = {
-        types: ['establishment'],                      // 検索タイプ
-        bounds: bounds,                            // 範囲優先検索
-        componentRestrictions: {country: 'jp'}     // 日本国内の住所のみ
-      };
-      autocomplete = new google.maps.places.Autocomplete(input, options);
-    }
     window.onload = function(){
       // フォームに入力された住所情報を取得
       var address = document.getElementById("restaurant_address").value;
@@ -53,6 +56,8 @@
     }
     //geocode();
     function geocode() {
+      console.log('geocode')
+
       var address = document.getElementById('restaurant_address').value;
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({ address: address }, function(results, status){
@@ -69,8 +74,8 @@
       });
     }
     </script>
-    <input type="text" name="location_lat" id="loc_lat" value="" class="hide"><br>
-    <input type="text" name="location_lng" id="loc_lng" value="" class="hide"><br>
+    <input type="text" name="location_lat" id="loc_lat" value=""><br>
+    <input type="text" name="location_lng" id="loc_lng" value=""><br>
     <p>写真</p>
     <i class="fas fa-plus fa-2x"></i>
 
@@ -91,6 +96,8 @@
       $('.fa-plus').click(function(){
         $('.input-file').click()
       });
+
+
     </script>
     <p>予算</p>
     ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
@@ -155,7 +162,26 @@
        });
     </script>
 
+    <button type="button" name="button" class="ok_button">OK</button>
     <button type="submit" value="ログイン" name="button" class="restaurant-map-btn">投稿する</button>
+    <script type="text/javascript">
+      // $('.ok_button').click(function(){
+      //     console.log('押された')
+      //     geocode();
+      //
+      //     $('.restaurant-map-btn').click()
+      // });
+      function click(){
+        $('.restaurant-map-btn').click()
+
+       }
+      $('.ok_button').click(function(){
+        console.log('押された')
+        geocode();
+        setTimeout("click()", 500);
+      });
+
+    </script>
 
   <% end %>
 </div>
