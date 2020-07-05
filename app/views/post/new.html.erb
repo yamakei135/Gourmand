@@ -4,7 +4,7 @@
     <p>名前</p>
     <input type="text" name="restaurant_name" value="" id="restaurant_name">
     <p>住所</p>
-    <input type="text" name="restaurant_adress" value="" id="restaurant_address"><button type="button" id="ok_button">OK</button>
+    <input type="text" name="restaurant_adress" value="" id="restaurant_address">
     <script type="text/javascript">
     var ok_button = document.getElementById("ok_button");
     ok_button.onclick = function() {
@@ -74,8 +74,8 @@
       });
     }
     </script>
-    <input type="text" name="location_lat" id="loc_lat" value=""><br>
-    <input type="text" name="location_lng" id="loc_lng" value=""><br>
+    <input type="text" name="location_lat" id="loc_lat" value="" class="hide"><br>
+    <input type="text" name="location_lng" id="loc_lng" value="" class="hide"><br>
     <p>写真</p>
     <i class="fas fa-plus fa-2x"></i>
 
@@ -162,8 +162,8 @@
        });
     </script>
 
-    <button type="button" name="button" class="ok_button">OK</button>
-    <button type="submit" value="ログイン" name="button" class="restaurant-map-btn">投稿する</button>
+    <button type="button" name="button" class="ok_button restaurant-map-btn">投稿する</button>
+    <button type="submit" value="ログイン" name="button" class="restaurant-map-btn hide">投稿する</button>
     <script type="text/javascript">
       // $('.ok_button').click(function(){
       //     console.log('押された')
@@ -178,7 +178,7 @@
       $('.ok_button').click(function(){
         console.log('押された')
         geocode();
-        setTimeout("click()", 500);
+        setTimeout("click()", 1000);
       });
 
     </script>
