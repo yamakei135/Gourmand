@@ -5,12 +5,6 @@
     <input type="text" name="restaurant_name" value="" id="restaurant_name">
     <p>住所</p>
     <input type="text" name="restaurant_adress" value="" id="restaurant_address">
-    <script type="text/javascript">
-    var ok_button = document.getElementById("ok_button");
-    ok_button.onclick = function() {
-      geocode();
-    }
-    </script>
     <div class="">
     </div>
     <script type="text/javascript">
@@ -57,7 +51,6 @@
     //geocode();
     function geocode() {
       console.log('geocode')
-
       var address = document.getElementById('restaurant_address').value;
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({ address: address }, function(results, status){
@@ -71,6 +64,7 @@
           alert('失敗しました。理由: ' + status);
           return;
         }
+        // return new Promise(resolve, reject)
       });
     }
     </script>
@@ -80,7 +74,7 @@
     <i class="fas fa-plus fa-2x"></i>
 
 
-    <input name="image"  type="file" class="input-file"  id="res-img" required >
+    <input name="image"  type="file" class="input-file"  id="res-img">
     <div class="preview">
       <img id="image-preview">
     </div>
@@ -103,7 +97,7 @@
     ￥<input type="number" name="cost" value="" oninput="sliceMaxLength(this, 6)" required>
 
     <div class="range-group hide">
-      <input type="range" min="0" max="5" value="0" name="rating" class="input-range" required>
+      <input type="range" min="0" max="5" value="0" name="rating" class="input-range">
      </div>
     <p>味</p>
     <div class="range-group">
@@ -166,20 +160,30 @@
     <button type="submit" value="ログイン" name="button" class="restaurant-map-btn hide">投稿する</button>
     <script type="text/javascript">
       // $('.ok_button').click(function(){
+      // geocode().then(
+      //   response => {
+      //     $('.restaurant-map-btn').click()
+      //   },
+      //   error => {
+      //     console.log('失敗');
+      //   }
+      // );
       //     console.log('押された')
       //     geocode();
       //
       //     $('.restaurant-map-btn').click()
       // });
-      function click(){
-        $('.restaurant-map-btn').click()
-
-       }
+      //
       $('.ok_button').click(function(){
         console.log('押された')
         geocode();
-        setTimeout("click()", 1000);
+        setTimeout("click()", 2000);
       });
+
+      function click(){
+        $('.restaurant-map-btn').click()
+        console.log('クリック')
+      }
 
     </script>
 
