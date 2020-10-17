@@ -23,6 +23,7 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: gourmand_pos
+  username: <%= ENV['USER_NAME'] %>
+  password: <%= ENV['PASSWORD'] %>
+  host: gourmand-rds.c8v7s8lcaz8f.ap-northeast-1.rds.amazonaws.com
